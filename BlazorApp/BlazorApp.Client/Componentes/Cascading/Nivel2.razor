@@ -1,0 +1,9 @@
+﻿<div style="background-color:@StyleContext.BackgroundColor; padding: 10px;">
+    <p>Componente de Nível 2</p>
+    <Nivel3 />
+</div>
+
+@code {
+    [CascadingParameter]
+    public StyleContext StyleContext { get; set; }
+}
