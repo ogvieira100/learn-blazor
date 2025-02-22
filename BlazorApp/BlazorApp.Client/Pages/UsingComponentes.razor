@@ -1,0 +1,79 @@
+﻿@page "/usingcomponentes"   
+
+@rendermode InteractiveAuto
+@implements IDisposable
+@attribute [StreamRendering]
+
+<h3>UsingComponentes</h3>
+
+<p class="card-text">Nome Cliente</p>
+<p class="card-text">@Customer.Name</p>
+<p class="card-text">SobreNome Cliente</p>
+<p class="card-text">@Customer.SurName</p>
+
+
+
+<BootstrapCard 
+Title="Titulo do Cartão" 
+Description="Esse é um Cartão"
+ButtonText="Este é nosso Botão"
+ClickBtn="@(()=>{
+                Console.WriteLine("Clicou no botão desgraçado"); 
+                StateHasChanged();
+    })"
+ClickBtnChangeDescription="@((string descricao)=>{
+                  descricao =  " Descrição Alterada";
+                  Console.WriteLine(descricao); 
+                  StateHasChanged();
+    })"
+ClickBtnChangeCustomer="@((Customers customer)=>{
+                  if (customer == null)
+                        customer = new Customers();
+                  customer.Name =  " João";
+                  customer.SurName =  " Silva";
+                  Customer = customer;    
+                  Console.WriteLine(customer.Name);  
+                 StateHasChanged();
+    })"
+ClickBtnChangeCustomerReturn="@(async (Customers customer)=>{
+                   if (customer == null)
+                        customer = new Customers();
+                  customer.Name =  " China";
+                  customer.SurName =  " Mequetrefe";
+                  Customer = customer; 
+                    StateHasChanged();
+                  return await Task.FromResult(customer);
+    })" 
+ClickBtnChangeDescriptionReturn="@(async (string descricao)=>{
+                  descricao +=  " - Alterado Com execução assincrona ";
+                  Console.WriteLine(descricao);
+StateHasChanged();
+                  return await Task.FromResult(descricao);
+    })" >
+    <Header>
+        <p>Header</p>
+    </Header>
+    <Body>
+        <p>Corpo do Cartão</p>  
+    </Body>
+    <Footer>
+        <p>Footer</p>
+    </Footer>
+</BootstrapCard>
+
+
+@code {
+
+    public Customers Customer { get; set; } = new Customers();
+
+    protected override bool ShouldRender()
+    {
+        return Customer != null;
+    }
+
+    public void Dispose()
+    {
+        Console.WriteLine("Componente descartado e recursos liberados.");
+    }
+
+}
