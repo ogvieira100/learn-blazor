@@ -1,0 +1,121 @@
+﻿
+@rendermode InteractiveAuto
+
+
+<div class="card text-center">
+    <div class="card-header">
+        @Task?.Name    
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">
+            @GetStatus()    
+        </h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+
+        @if (Task?.TaskStatus == Models.TaskStatus.NotStarted 
+        )
+        {
+            <button @onclick=InitTaskAsync class="btn btn-primary">
+                Iniciar
+            </button>
+        }else if (Task?.TaskStatus == Models.TaskStatus.InProgress)
+        {
+            <button @onclick=EndTaskAsync class="btn btn-success">
+                Finalizar
+            </button>
+            <button @onclick=SendInitialAsync class="btn btn-warning">
+                Voltar para o início
+            </button>
+        }
+        else if (Task?.TaskStatus == Models.TaskStatus.Completed)
+        {
+            <button @onclick=SendInProgressAsync class="btn btn-warning">
+                Voltar para em andamento
+            </button>
+            <button @onclick=SendInitialAsync class="btn btn-primary">
+                Voltar para o inicio
+            </button>
+        }   
+    </div>
+    <div class="card-footer text-body-secondary">
+        @GetStatusCard()
+    </div>
+</div>
+
+@code {
+
+
+    protected override void OnInitialized()
+    {
+        if (Task != null)
+        {
+            Task.UpdateTast += async (taskStatus) =>
+            {
+                await UpdateTask(taskStatus);
+            };
+        }
+    }
+    string GetStatusCard()
+    => $" Nome Tarefa: {Task?.Name ?? ""} Data inclusão: {Task?.DateCreated} Data da atualização: {Task?.DateUpdated} ";
+    
+    
+    public async Task UpdateTask(Models.TaskStatus taskStatus)
+    {
+        this.Task!.TaskStatus = taskStatus;
+        this.Task!.DateUpdated = DateTime.Now;
+        if (TaskUpdated != null)
+            await TaskUpdated?.InvokeAsync();
+    }   
+
+    async Task SendInProgressAsync()
+    {
+        this.Task!.DateUpdated = DateTime.Now;
+        this.Task!.TaskStatus = Models.TaskStatus.InProgress;
+        if (TaskUpdated != null)
+            await TaskUpdated?.InvokeAsync();
+
+    }
+
+    async Task SendInitialAsync()
+    {
+        this.Task!.DateUpdated = DateTime.Now;
+        this.Task!.TaskStatus = Models.TaskStatus.NotStarted;
+        if (TaskUpdated != null)
+            await TaskUpdated?.InvokeAsync();
+
+    }
+
+    async Task EndTaskAsync() { 
+        this.Task!.DateUpdated = DateTime.Now;
+        this.Task!.TaskStatus = Models.TaskStatus.Completed;
+        if (TaskUpdated != null)
+            await TaskUpdated?.InvokeAsync();
+    
+    }
+
+    async Task InitTaskAsync()
+    {
+        this.Task!.DateUpdated = DateTime.Now;
+        this.Task!.TaskStatus = Models.TaskStatus.InProgress;
+        if     (TaskUpdated != null)
+        await  TaskUpdated?.InvokeAsync();
+    }   
+
+    string GetStatus()
+    {
+        return Task?.TaskStatus switch
+        {
+            BlazorApp.Client.Models.TaskStatus.NotStarted => "Não iniciada",
+            BlazorApp.Client.Models.TaskStatus.InProgress => "Em progresso",
+            BlazorApp.Client.Models.TaskStatus.Completed => "Finalizada",
+            _ => ""
+        };
+    }   
+
+    [Parameter]
+    public Tasks? Task { get; set; }
+
+    [Parameter]
+    public EventCallback? TaskUpdated { get; set; }
+
+}
