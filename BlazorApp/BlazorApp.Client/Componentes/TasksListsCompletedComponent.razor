@@ -14,6 +14,9 @@
         <button @onclick=InitialAll class="btn btn-primary">
            Voltar para o inicio as tarefa(s)
         </button>
+        <button @onclick=MovingAll class="btn btn-primary">
+            Voltar para em andamento as tarefa(s)
+        </button>
     </div>
     <div class="card-footer text-body-secondary">
         @GetCountComponent()
@@ -22,6 +25,17 @@
 
 @code {
     async Task InitialAll()
+    {
+
+        foreach (var item in Tasks.Where(x => x.TaskStatus == Models.TaskStatus.Completed))
+        {
+            var taskUpdated = item.UpdateTast?.Invoke(Models.TaskStatus.NotStarted);
+            if (taskUpdated != null)
+                await Task.WhenAll(taskUpdated);
+        }
+    }
+
+    async Task MovingAll()
     {
 
         foreach (var item in Tasks.Where(x => x.TaskStatus == Models.TaskStatus.Completed))
@@ -36,9 +50,12 @@
     => $" Total de tarefas não iniciadas: {Tasks.Where(x => x.TaskStatus == Models.TaskStatus.Completed).Count()}";
 
 
-    public void UpdateComponent()
+    public async Task UpdateComponent()
     {
-        StateHasChanged();
+        await InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
     }
 
     async Task TaskUpdated()

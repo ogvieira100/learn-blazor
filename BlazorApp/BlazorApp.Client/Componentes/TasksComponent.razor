@@ -2,13 +2,14 @@
 @rendermode InteractiveAuto
 
 
-<div class="card text-center">
+<div class=@GetCardClass()>
     <div class="card-header">
-        @Task?.Name    
+        @GetStatus()
+           
     </div>
     <div class="card-body">
         <h5 class="card-title">
-            @GetStatus()    
+            @Task?.Name
         </h5>
         @if (Task?.TaskStatus == Models.TaskStatus.NotStarted 
         )
@@ -41,6 +42,16 @@
 </div>
 
 @code {
+
+
+    string GetCardClass()
+    => Task?.TaskStatus switch
+    {
+        BlazorApp.Client.Models.TaskStatus.NotStarted => @"card text-bg-primary mb-3",
+        BlazorApp.Client.Models.TaskStatus.InProgress => "card text-bg-warning mb-3",
+        BlazorApp.Client.Models.TaskStatus.Completed => "card text-bg-success mb-3",
+        _ => ""
+    };  
 
 
     protected override void OnParametersSet()

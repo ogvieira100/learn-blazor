@@ -36,8 +36,11 @@
     => $" Total de tarefas não iniciadas: {Tasks.Where(x=>x.TaskStatus == Models.TaskStatus.NotStarted).Count()}";  
 
 
-    public void UpdateComponent() { 
-        StateHasChanged();
+    public async Task UpdateComponent() { 
+        await InvokeAsync(() =>
+        {
+            StateHasChanged();
+        }); 
     }
 
     async Task TaskUpdated() { 

@@ -1,23 +1,43 @@
 ﻿@page "/taskslists"
 @rendermode InteractiveAuto 
 
-<TaskAddComponent Tasks=Tasks
-TaskAdded=TaskUpdatedAsync />
+<div class="container mt-4">
+    <!-- Linha do topo -->
+    <div class="row">
+        <div class="col-12" >
+            <TaskAddComponent Tasks=Tasks
+                              TaskAdded=TaskUpdatedAsync />
 
-<TasksListNotStartedComponent 
-TasksUpdated=TaskUpdatedUpdateAllAsync
-@ref="tasksListNotStartedComponent"
-Tasks=Tasks />
+        </div>
+    </div>
 
-<TasksListsInProgressComponent 
-@ref="tasksListsInProgressComponent"
-TasksUpdated=TaskUpdatedUpdateAllAsync
-Tasks=Tasks />
+    <!-- Linha inferior com três colunas -->
+    <div class="row mt-2">
+        <div class="col-md-4" >
+            <TasksListNotStartedComponent TasksUpdated=TaskUpdatedUpdateAllAsync
+                                          @ref="tasksListNotStartedComponent"
+                                          Tasks=Tasks />
 
-<TasksListsCompletedComponent 
-@ref="tasksListsCompletedComponent"
-TasksUpdated=TaskUpdatedUpdateAllAsync
-Tasks=Tasks />
+        </div>
+        <div class="col-md-4" >
+            <TasksListsInProgressComponent @ref="tasksListsInProgressComponent"
+                                           TasksUpdated=TaskUpdatedUpdateAllAsync
+                                           Tasks=Tasks />
+
+        </div>
+        <div class="col-md-4" >
+            <TasksListsCompletedComponent @ref="tasksListsCompletedComponent"
+                                          TasksUpdated=TaskUpdatedUpdateAllAsync
+                                          Tasks=Tasks />
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 
 @code {
     List<Tasks> Tasks { get; set; } 
@@ -52,13 +72,10 @@ Tasks=Tasks />
 
     async Task TaskUpdatedUpdateAllAsync(Models.TaskStatus taskStatus)
     {
-        await Task.Run(() =>
-        {
-            tasksListNotStartedComponent?.UpdateComponent();
-            tasksListsInProgressComponent?.UpdateComponent();
-            tasksListsCompletedComponent?.UpdateComponent();
+           await tasksListNotStartedComponent?.UpdateComponent();
+           await tasksListsInProgressComponent?.UpdateComponent();
+           await tasksListsCompletedComponent?.UpdateComponent();
             StateHasChanged();
-        });
     } 
 
 
@@ -66,16 +83,7 @@ Tasks=Tasks />
     protected override void OnInitialized()
     {
         Tasks = new List<Tasks>();
-        // Tasks = new List<Tasks>() { 
-        
-        //     new Tasks() 
-        //     { Name = "Task 1", TaskStatus = BlazorApp.Client.Models.TaskStatus.NotStarted },
-        //      new Tasks()
-        //     { Name = "Task 1", TaskStatus = BlazorApp.Client.Models.TaskStatus.Completed },
-        //      new Tasks()
-        //     { Name = "Task 1", TaskStatus = BlazorApp.Client.Models.TaskStatus.InProgress }
-
-        // };
+       
     }
 
 }

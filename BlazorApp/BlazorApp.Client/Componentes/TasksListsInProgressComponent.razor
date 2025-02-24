@@ -12,8 +12,12 @@
             TaskUpdated="TaskUpdated" />
         }
         <button @onclick=InitialAll class="btn btn-primary">
-           Voltar para Iniciar tarefa(s)
+            Voltar para Iniciar tarefa(s)
         </button>
+        <button @onclick=FinalyAll class="btn btn-primary">
+            Finalizar todas as tarefa(s)
+        </button>
+
     </div>
     <div class="card-footer text-body-secondary">
         @GetCountComponent()
@@ -21,6 +25,15 @@
 </div>
 
 @code {
+    async Task FinalyAll() { 
+        foreach (var item in Tasks.Where(x => x.TaskStatus == Models.TaskStatus.InProgress))
+        {
+            var taskUpdated = item.UpdateTast?.Invoke(Models.TaskStatus.Completed);
+            if (taskUpdated != null)
+                await Task.WhenAll(taskUpdated);
+        }
+    
+    }
     async Task InitialAll()
     {
 
@@ -36,9 +49,12 @@
     => $" Total de tarefas não iniciadas: {Tasks.Where(x => x.TaskStatus == Models.TaskStatus.InProgress).Count()}";
 
 
-    public void UpdateComponent()
+    public async Task UpdateComponent()
     {
-        StateHasChanged();
+        await InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
     }
 
     async Task TaskUpdated()
