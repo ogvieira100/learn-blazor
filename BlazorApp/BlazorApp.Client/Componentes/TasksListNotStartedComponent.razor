@@ -7,12 +7,11 @@
 
         @foreach (var item in Tasks.Where(x=>x.TaskStatus == Models.TaskStatus.NotStarted))
         {
-            < TasksComponent
+            <TasksComponent
             Task="item"
             TaskUpdated="TaskUpdated" />
         }
-
-        <button  class="btn btn-primary">
+        <button @onclick=InitialAll class="btn btn-primary">
             Iniciar tarefa(s)
         </button>
     </div>
@@ -22,8 +21,16 @@
 </div>
 
 @code {
+    async Task InitialAll()
+    { 
 
-   // async InitialAll
+        foreach (var item in Tasks.Where(x => x.TaskStatus == Models.TaskStatus.NotStarted))
+        {
+            var taskUpdated =  item.UpdateTast?.Invoke(Models.TaskStatus.InProgress);
+            if (taskUpdated != null)
+                await Task.WhenAll(taskUpdated);
+        }   
+    }
 
     string GetCountComponent()
     => $" Total de tarefas não iniciadas: {Tasks.Where(x=>x.TaskStatus == Models.TaskStatus.NotStarted).Count()}";  

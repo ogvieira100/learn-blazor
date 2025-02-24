@@ -1,7 +1,54 @@
-﻿<h3>TasksListsInProgressComponent</h3>
+﻿<div class="card text-center">
+    <div class="card-header">
+        Tarefas em andamento
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Tarefas</h5>
 
+        @foreach (var item in Tasks.Where(x => x.TaskStatus == Models.TaskStatus.InProgress))
+        {
+            <TasksComponent
+            Task="item"
+            TaskUpdated="TaskUpdated" />
+        }
+        <button @onclick=InitialAll class="btn btn-primary">
+           Voltar para Iniciar tarefa(s)
+        </button>
+    </div>
+    <div class="card-footer text-body-secondary">
+        @GetCountComponent()
+    </div>
+</div>
 
 @code {
+    async Task InitialAll()
+    {
+
+        foreach (var item in Tasks.Where(x => x.TaskStatus == Models.TaskStatus.InProgress))
+        {
+            var taskUpdated = item.UpdateTast?.Invoke(Models.TaskStatus.NotStarted);
+            if (taskUpdated != null)
+                await Task.WhenAll(taskUpdated);
+        }
+    }
+
+    string GetCountComponent()
+    => $" Total de tarefas não iniciadas: {Tasks.Where(x => x.TaskStatus == Models.TaskStatus.InProgress).Count()}";
+
+
+    public void UpdateComponent()
+    {
+        StateHasChanged();
+    }
+
+    async Task TaskUpdated()
+    {
+        StateHasChanged();
+        await TasksUpdated?.InvokeAsync(Models.TaskStatus.NotStarted);
+    }
+
+    [Parameter]
+    public EventCallback<Models.TaskStatus>? TasksUpdated { get; set; }
 
 
     [Parameter]

@@ -7,7 +7,10 @@ namespace BlazorApp.Client.Models
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         string color;
-
+        public StyleContext()
+        {
+            color = "#ADD8E6";
+        }
         public string BackgroundColor
         {
             get => color;

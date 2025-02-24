@@ -10,8 +10,6 @@
         <h5 class="card-title">
             @GetStatus()    
         </h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
         @if (Task?.TaskStatus == Models.TaskStatus.NotStarted 
         )
         {
@@ -45,16 +43,22 @@
 @code {
 
 
-    protected override void OnInitialized()
+    protected override void OnParametersSet()
     {
         if (Task != null)
         {
-            Task.UpdateTast += async (taskStatus) =>
+            Task.UpdateTast += (taskStatus) =>
             {
-                await UpdateTask(taskStatus);
+                return UpdateTask(taskStatus);
             };
         }
     }
+
+    protected override void OnInitialized()
+    {
+       
+    }
+
     string GetStatusCard()
     => $" Nome Tarefa: {Task?.Name ?? ""} Data inclusão: {Task?.DateCreated} Data da atualização: {Task?.DateUpdated} ";
     
@@ -63,16 +67,16 @@
     {
         this.Task!.TaskStatus = taskStatus;
         this.Task!.DateUpdated = DateTime.Now;
-        if (TaskUpdated != null)
-            await TaskUpdated?.InvokeAsync();
+       
+            await TaskUpdated.InvokeAsync();
     }   
 
     async Task SendInProgressAsync()
     {
         this.Task!.DateUpdated = DateTime.Now;
         this.Task!.TaskStatus = Models.TaskStatus.InProgress;
-        if (TaskUpdated != null)
-            await TaskUpdated?.InvokeAsync();
+        
+            await TaskUpdated.InvokeAsync();
 
     }
 
@@ -80,16 +84,16 @@
     {
         this.Task!.DateUpdated = DateTime.Now;
         this.Task!.TaskStatus = Models.TaskStatus.NotStarted;
-        if (TaskUpdated != null)
-            await TaskUpdated?.InvokeAsync();
+       
+            await TaskUpdated.InvokeAsync();
 
     }
 
     async Task EndTaskAsync() { 
         this.Task!.DateUpdated = DateTime.Now;
         this.Task!.TaskStatus = Models.TaskStatus.Completed;
-        if (TaskUpdated != null)
-            await TaskUpdated?.InvokeAsync();
+      
+            await TaskUpdated.InvokeAsync();
     
     }
 
@@ -97,8 +101,8 @@
     {
         this.Task!.DateUpdated = DateTime.Now;
         this.Task!.TaskStatus = Models.TaskStatus.InProgress;
-        if     (TaskUpdated != null)
-        await  TaskUpdated?.InvokeAsync();
+       
+        await  TaskUpdated.InvokeAsync();
     }   
 
     string GetStatus()
@@ -116,6 +120,6 @@
     public Tasks? Task { get; set; }
 
     [Parameter]
-    public EventCallback? TaskUpdated { get; set; }
+    public EventCallback TaskUpdated { get; set; }
 
 }

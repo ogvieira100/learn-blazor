@@ -1,7 +1,66 @@
-﻿<h3>TasksListsComponent</h3>
+﻿@page "/taskslists" 
+
+<TaskAddComponent Tasks=Tasks
+TaskAdded=TaskUpdatedAsync />
+
+<TasksListNotStartedComponent @ref="tasksListNotStartedComponent"
+Tasks=Tasks />
+
+<TasksListsInProgressComponent @ref="tasksListsInProgressComponent"
+Tasks=Tasks />
+
+<TasksListsCompletedComponent @ref="tasksListsCompletedComponent"
+Tasks=Tasks />
+
+
+
+
+
 
 @code {
+    List<Tasks> Tasks { get; set; } 
 
+    TasksListNotStartedComponent? tasksListNotStartedComponent { get; set; }
 
+    TasksListsCompletedComponent? tasksListsCompletedComponent { get; set; }
+
+    TasksListsInProgressComponent? tasksListsInProgressComponent { get; set; }
+
+    async Task TaskUpdatedAsync(Models.TaskStatus taskStatus)
+    {
+        await Task.Run(() =>
+        {
+
+            switch (taskStatus)
+            {
+                case Models.TaskStatus.NotStarted:
+                    tasksListNotStartedComponent?.UpdateComponent();
+                    break;
+                case Models.TaskStatus.InProgress:
+                    tasksListsInProgressComponent?.UpdateComponent();
+                    break;
+                case Models.TaskStatus.Completed:
+                    tasksListsCompletedComponent?.UpdateComponent();
+                    break;
+            }
+            StateHasChanged();
+
+        });
+
+    }   
+
+    protected override void OnInitialized()
+    {
+        Tasks = new List<Tasks>() { 
+        
+            new Tasks() 
+            { Name = "Task 1", TaskStatus = BlazorApp.Client.Models.TaskStatus.NotStarted },
+             new Tasks()
+            { Name = "Task 1", TaskStatus = BlazorApp.Client.Models.TaskStatus.Completed },
+             new Tasks()
+            { Name = "Task 1", TaskStatus = BlazorApp.Client.Models.TaskStatus.InProgress }
+
+        };
+    }
 
 }

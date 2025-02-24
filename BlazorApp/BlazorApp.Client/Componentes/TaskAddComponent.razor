@@ -1,0 +1,61 @@
+﻿@rendermode InteractiveAuto
+
+<div class="card">
+    <div class="card-header">
+        Adicionar Task
+    </div>
+    <div class="card-body">
+        <div class="row mb-3" >
+            <div class="col-sm-12" >
+                <select @bind=TaskStatus class="form-select">
+                    <option >Selecione</option>
+                    <option value="1">Não Iniciado</option>
+                    <option value="2">Em Andamento</option>
+                    <option value="3">Completa</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-12">
+                <input class="form-control" @bind=TaskName />
+            </div>
+        </div>
+        <button @onclick="AddTask"  
+        class="btn btn-primary"
+        >
+            Adicionar Task
+        </button>
+    </div>
+</div>
+
+@code {
+
+    string? TaskName { get; set; } 
+    string? TaskStatus { get; set; }
+
+    async Task AddTask()
+    {
+
+        if (!string.IsNullOrEmpty(TaskName)
+                && !string.IsNullOrEmpty(TaskStatus)
+           )
+        { 
+
+            var taskStatus = (Models.TaskStatus)Enum.Parse(typeof(Models.TaskStatus), TaskStatus);  
+            var task = new BlazorApp.Client.Models.Tasks()
+                {
+                    Name = "Task 1",
+                    TaskStatus = taskStatus 
+
+                };
+            Tasks.Add(task);
+            await  TaskAdded.InvokeAsync(task.TaskStatus); 
+        }
+    }   
+
+    [Parameter]
+    public List<BlazorApp.Client.Models.Tasks> Tasks { get; set; } = new  List<BlazorApp.Client.Models.Tasks>();
+
+    [Parameter]
+    public EventCallback<Models.TaskStatus> TaskAdded { get; set; }
+}

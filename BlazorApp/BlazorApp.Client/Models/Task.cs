@@ -5,9 +5,9 @@ namespace BlazorApp.Client.Models
 
     public enum TaskStatus
     {
-        NotStarted,
-        InProgress,
-        Completed
+        NotStarted = 1,
+        InProgress = 2,
+        Completed = 3
     }
     public class Tasks
     {
@@ -19,7 +19,8 @@ namespace BlazorApp.Client.Models
 
         public DateTime? DateUpdated { get; set; }
 
-      
+        public Func<TaskStatus,Task>? UpdateTast;
+
 
 
         public Tasks()

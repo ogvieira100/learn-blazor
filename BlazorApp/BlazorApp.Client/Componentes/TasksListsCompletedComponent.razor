@@ -1,12 +1,58 @@
-﻿<h3>TasksListsCompletedComponent</h3>
+﻿<div class="card text-center">
+    <div class="card-header">
+        Tarefas completas
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Tarefas</h5>
 
-
+        @foreach (var item in Tasks.Where(x => x.TaskStatus == Models.TaskStatus.Completed))
+        {
+            <TasksComponent
+            Task="item"
+            TaskUpdated="TaskUpdated" />
+        }
+        <button @onclick=InitialAll class="btn btn-primary">
+           Voltar para o inicio as tarefa(s)
+        </button>
+    </div>
+    <div class="card-footer text-body-secondary">
+        @GetCountComponent()
+    </div>
+</div>
 
 @code {
+    async Task InitialAll()
+    {
+
+        foreach (var item in Tasks.Where(x => x.TaskStatus == Models.TaskStatus.Completed))
+        {
+            var taskUpdated = item.UpdateTast?.Invoke(Models.TaskStatus.InProgress);
+            if (taskUpdated != null)
+                await Task.WhenAll(taskUpdated);
+        }
+    }
+
+    string GetCountComponent()
+    => $" Total de tarefas não iniciadas: {Tasks.Where(x => x.TaskStatus == Models.TaskStatus.Completed).Count()}";
+
+
+    public void UpdateComponent()
+    {
+        StateHasChanged();
+    }
+
+    async Task TaskUpdated()
+    {
+        StateHasChanged();
+        await TasksUpdated?.InvokeAsync(Models.TaskStatus.NotStarted);
+    }
+
+    [Parameter]
+    public EventCallback<Models.TaskStatus>? TasksUpdated { get; set; }
 
 
     [Parameter]
-    public List<BlazorApp.Client.Models.Tasks> Tasks { get; set; } = new 
-    List<BlazorApp.Client.Models.Tasks>();  
+    public List<BlazorApp.Client.Models.Tasks> Tasks { get; set; } = new
+    List<BlazorApp.Client.Models.Tasks>();
 
 }
