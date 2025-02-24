@@ -41,12 +41,13 @@
     }
 
     async Task TaskUpdated() { 
+       
          StateHasChanged();
-        await TasksUpdated?.InvokeAsync(Models.TaskStatus.NotStarted);
+         await TasksUpdated.InvokeAsync(Models.TaskStatus.NotStarted);
     }
 
     [Parameter]
-    public EventCallback<Models.TaskStatus>? TasksUpdated { get; set; }
+    public EventCallback<Models.TaskStatus> TasksUpdated { get; set; }
 
 
     [Parameter]

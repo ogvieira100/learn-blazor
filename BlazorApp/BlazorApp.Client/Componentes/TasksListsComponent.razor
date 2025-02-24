@@ -1,21 +1,23 @@
-﻿@page "/taskslists" 
+﻿@page "/taskslists"
+@rendermode InteractiveAuto 
 
 <TaskAddComponent Tasks=Tasks
 TaskAdded=TaskUpdatedAsync />
 
-<TasksListNotStartedComponent @ref="tasksListNotStartedComponent"
+<TasksListNotStartedComponent 
+TasksUpdated=TaskUpdatedUpdateAllAsync
+@ref="tasksListNotStartedComponent"
 Tasks=Tasks />
 
-<TasksListsInProgressComponent @ref="tasksListsInProgressComponent"
+<TasksListsInProgressComponent 
+@ref="tasksListsInProgressComponent"
+TasksUpdated=TaskUpdatedUpdateAllAsync
 Tasks=Tasks />
 
-<TasksListsCompletedComponent @ref="tasksListsCompletedComponent"
+<TasksListsCompletedComponent 
+@ref="tasksListsCompletedComponent"
+TasksUpdated=TaskUpdatedUpdateAllAsync
 Tasks=Tasks />
-
-
-
-
-
 
 @code {
     List<Tasks> Tasks { get; set; } 
@@ -44,23 +46,36 @@ Tasks=Tasks />
                     break;
             }
             StateHasChanged();
-
         });
 
     }   
 
+    async Task TaskUpdatedUpdateAllAsync(Models.TaskStatus taskStatus)
+    {
+        await Task.Run(() =>
+        {
+            tasksListNotStartedComponent?.UpdateComponent();
+            tasksListsInProgressComponent?.UpdateComponent();
+            tasksListsCompletedComponent?.UpdateComponent();
+            StateHasChanged();
+        });
+    } 
+
+
+
     protected override void OnInitialized()
     {
-        Tasks = new List<Tasks>() { 
+        Tasks = new List<Tasks>();
+        // Tasks = new List<Tasks>() { 
         
-            new Tasks() 
-            { Name = "Task 1", TaskStatus = BlazorApp.Client.Models.TaskStatus.NotStarted },
-             new Tasks()
-            { Name = "Task 1", TaskStatus = BlazorApp.Client.Models.TaskStatus.Completed },
-             new Tasks()
-            { Name = "Task 1", TaskStatus = BlazorApp.Client.Models.TaskStatus.InProgress }
+        //     new Tasks() 
+        //     { Name = "Task 1", TaskStatus = BlazorApp.Client.Models.TaskStatus.NotStarted },
+        //      new Tasks()
+        //     { Name = "Task 1", TaskStatus = BlazorApp.Client.Models.TaskStatus.Completed },
+        //      new Tasks()
+        //     { Name = "Task 1", TaskStatus = BlazorApp.Client.Models.TaskStatus.InProgress }
 
-        };
+        // };
     }
 
 }

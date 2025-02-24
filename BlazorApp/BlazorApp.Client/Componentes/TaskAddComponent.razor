@@ -44,7 +44,7 @@
             var taskStatus = (Models.TaskStatus)Enum.Parse(typeof(Models.TaskStatus), TaskStatus);  
             var task = new BlazorApp.Client.Models.Tasks()
                 {
-                    Name = "Task 1",
+                    Name = TaskName,
                     TaskStatus = taskStatus 
 
                 };

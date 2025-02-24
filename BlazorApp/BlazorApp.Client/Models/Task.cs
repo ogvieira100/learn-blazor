@@ -21,7 +21,7 @@ namespace BlazorApp.Client.Models
 
         public Func<TaskStatus,Task>? UpdateTast;
 
-
+        public Guid Id { get; set; }
 
         public Tasks()
         {
@@ -33,6 +33,7 @@ namespace BlazorApp.Client.Models
             : base()
         {
             Name = name;
+            Id = Guid.NewGuid();
         }
     }
 }
