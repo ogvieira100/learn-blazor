@@ -47,7 +47,7 @@
     }
 
     string GetCountComponent()
-    => $" Total de tarefas não iniciadas: {Tasks.Where(x => x.TaskStatus == Models.TaskStatus.Completed).Count()}";
+    => $" Total de tarefas finalizadas: {Tasks.Where(x => x.TaskStatus == Models.TaskStatus.Completed).Count()}";
 
 
     public async Task UpdateComponent()

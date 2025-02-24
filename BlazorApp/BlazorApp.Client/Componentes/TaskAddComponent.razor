@@ -1,56 +1,54 @@
 ﻿@rendermode InteractiveAuto
 
-<div class="card">
-    <div class="card-header">
-        Adicionar Task
-    </div>
-    <div class="card-body">
-        <div class="row mb-3" >
-            <div class="col-sm-12" >
-                <select @bind=TaskStatus class="form-select">
-                    <option >Selecione</option>
-                    <option value="1">Não Iniciado</option>
-                    <option value="2">Em Andamento</option>
-                    <option value="3">Completa</option>
-                </select>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-sm-12">
-                <input class="form-control" @bind=TaskName />
-            </div>
-        </div>
-        <button @onclick="AddTask"  
-        class="btn btn-primary"
-        >
+<EditForm Model="@Task" OnValidSubmit="AddTask" >
+    <DataAnnotationsValidator />
+
+    <div class="card">
+        <div class="card-header">
             Adicionar Task
-        </button>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3" >
+                <div class="col-sm-12" >
+                    <select @bind="Task.TaskStatusDescription" class="form-select">
+                        <option >Selecione</option>
+                        <option value="1">Não Iniciado</option>
+                        <option value="2">Em Andamento</option>
+                        <option value="3">Completa</option>
+                    </select>
+                    <ValidationMessage For="@(() => Task.TaskStatusDescription)" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" @bind="Task.Name" />
+                    <ValidationMessage For="@(() => Task.Name)" />
+                </div>
+            </div>
+            <button type="submit"  class="btn btn-primary">
+                Adicionar Task
+            </button>
+        </div>
     </div>
-</div>
+</EditForm>
 
 @code {
+    protected override void OnInitialized()
+    {
+        Task = new Tasks();
+    }
 
-    string? TaskName { get; set; } 
-    string? TaskStatus { get; set; }
+    public BlazorApp.Client.Models.Tasks Task { get; set; }
 
     async Task AddTask()
     {
-
-        if (!string.IsNullOrEmpty(TaskName)
-                && !string.IsNullOrEmpty(TaskStatus)
-           )
-        { 
-
-            var taskStatus = (Models.TaskStatus)Enum.Parse(typeof(Models.TaskStatus), TaskStatus);  
-            var task = new BlazorApp.Client.Models.Tasks()
-                {
-                    Name = TaskName,
-                    TaskStatus = taskStatus 
-
-                };
-            Tasks.Add(task);
-            await  TaskAdded.InvokeAsync(task.TaskStatus); 
+        if (int.TryParse(Task.TaskStatusDescription, out int status))
+        {
+            Task.TaskStatus = (Models.TaskStatus)status;
         }
+        Tasks.Add(Task);
+        await TaskAdded.InvokeAsync(Task.TaskStatus ?? Models.TaskStatus.NotStarted);
+
     }   
 
     [Parameter]

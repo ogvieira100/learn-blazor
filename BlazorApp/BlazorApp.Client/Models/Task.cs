@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using System.ComponentModel.DataAnnotations;
 
 namespace BlazorApp.Client.Models
 {
@@ -11,21 +12,31 @@ namespace BlazorApp.Client.Models
     }
     public class Tasks
     {
-        public TaskStatus TaskStatus { get; set; }
+        [Required(ErrorMessage = " Atenção campo task requirido. ")]
+        public TaskStatus? TaskStatus { get; set; }
 
-        public required string Name { get; set; }
+        [Required(ErrorMessage = " Atenção campo task requirido. ")]
+        public string? TaskStatusDescription
+        {
+            get
+            ;
+            set
+           ;
+        }
+        [Required(ErrorMessage = " Atenção campo nome requirido. ")]
+        public  string? Name { get; set; }
 
         public DateTime DateCreated { get; set; }
 
         public DateTime? DateUpdated { get; set; }
 
-        public Func<TaskStatus,Task>? UpdateTast;
+        public Func<TaskStatus, Task>? UpdateTast;
 
         public Guid Id { get; set; }
 
         public Tasks()
         {
-            TaskStatus = TaskStatus.NotStarted;
+            TaskStatus = BlazorApp.Client.Models.TaskStatus.NotStarted;
             DateCreated = DateTime.Now;
         }
 
