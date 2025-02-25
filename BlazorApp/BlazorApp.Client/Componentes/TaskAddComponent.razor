@@ -1,4 +1,5 @@
 ﻿@rendermode InteractiveAuto
+@inject IJSRuntime JSRuntime    
 
 <EditForm Model="@Task" OnValidSubmit="AddTask" >
     <DataAnnotationsValidator />
@@ -42,13 +43,19 @@
 
     async Task AddTask()
     {
+        if (Tasks.Any(x => x.Name.Equals(Task.Name)))
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Tarefa já cadastrada verifique");
+            Task = new Tasks();
+            return;
+        }
         if (int.TryParse(Task.TaskStatusDescription, out int status))
         {
             Task.TaskStatus = (Models.TaskStatus)status;
         }
         Tasks.Add(Task);
         await TaskAdded.InvokeAsync(Task.TaskStatus ?? Models.TaskStatus.NotStarted);
-
+        Task = new Tasks();
     }   
 
     [Parameter]

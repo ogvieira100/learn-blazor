@@ -9,11 +9,15 @@
         {
             <TasksComponent
             Task="item"
+            TaskDeleted="TaskDeleted"
             TaskUpdated="TaskUpdated" />
         }
-        <button @onclick=InitialAll class="btn btn-primary">
-            Iniciar tarefa(s)
-        </button>
+        @if (Tasks.Any(x => x.TaskStatus == Models.TaskStatus.NotStarted))
+        {
+            <button @onclick=InitialAll class="btn btn-primary">
+                Iniciar tarefa(s)
+            </button>
+        }
     </div>
     <div class="card-footer text-body-secondary">
         @GetCountComponent()
@@ -42,6 +46,11 @@
             StateHasChanged();
         }); 
     }
+
+    async Task TaskDeleted(Models.Tasks task) { 
+        Tasks.Remove(task);
+        await TasksUpdated.InvokeAsync(Models.TaskStatus.NotStarted);
+    }   
 
     async Task TaskUpdated() { 
        
