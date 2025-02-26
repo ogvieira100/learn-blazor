@@ -5,8 +5,9 @@ namespace BlazorApp.Client.Models
 
     public class ResponseCustomerPaginated : ResponsePaginated<Customers>
     {
-        public ResponseCustomerPaginated(IEnumerable<Customers> itens,
-            Pagination pagination) : base(itens, pagination, new List<string>
+        public ResponseCustomerPaginated(List<Customers> itens,
+               Pagination pagination) 
+            : base(itens, pagination, new List<string>
             {
                     "Nome",
                     "Email" ,
@@ -34,15 +35,15 @@ namespace BlazorApp.Client.Models
     public abstract class ResponsePaginated<T> where T : class
     {
 
-        public required IEnumerable<T> List { get; set; }
-        public required IEnumerable<string> Headers { get; set; }
-        public required Pagination Pagination { get; set; }
+        public  List<T> List { get; set; }
+        public  List<string> Headers { get; set; }
+        public  Pagination Pagination { get; set; }
         protected abstract List<Func<T, object>> GetListFormated();
         public List<Func<T, object>>? ColumnsTemplates { get; protected set; }
 
 
-        protected ResponsePaginated(IEnumerable<T> itens,
-            Pagination pagination, IEnumerable<string> headers) : base()
+        protected ResponsePaginated(List<T> itens,
+            Pagination pagination, List<string> headers) : base()
         {
             Headers = headers;
             List = itens;

@@ -20,11 +20,12 @@
         }
     </tbody>
 </table>
-<PaginateComponent />
+<PaginateComponent 
+    Pagination="ResponsePaginated.Pagination" />
 
 @code {
 
-  [Parameter]
+    [Parameter]
     public ResponsePaginated<TItem>? ResponsePaginated { get; set; }
 
 }

@@ -6,14 +6,18 @@
 
 <h3>Customer List</h3> 
 
-<PaginateComponent 
-    Pagination=Pagination
-    PageSelected=OnPageSelected
-    />
+@* <PaginateComponent 
+Pagination=Pagination
+PageSelected=OnPageSelected
+/> *@
+ 
+<TableCardPaginated ResponsePaginated="ResponsePaginatedCustomer" />
 
 
 @code {
-
+    List<Customers> Customers = new List<Customers>();
+    ResponseCustomerPaginated? ResponsePaginatedCustomer;
+    BlazorApp.Client.Models.Pagination Pagination = new Pagination();
 
     async Task OnPageSelected(int page)
     {
@@ -22,11 +26,17 @@
         }); 
     }   
 
-    Pagination Pagination = new Pagination();
+
+
+
 
     protected override void OnInitialized()
     {
-        Pagination.QtdItens = 100;
+        Customers = CustomerGenerator.GenerateCustomers(100);
+        Pagination = new Pagination();
+        Pagination.QtdItens = Customers.Count;  
+        ResponsePaginatedCustomer = new ResponseCustomerPaginated(itens: Customers,
+            pagination: Pagination);
     }
 
 
