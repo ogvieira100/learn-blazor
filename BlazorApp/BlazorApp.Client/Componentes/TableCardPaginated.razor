@@ -2,17 +2,17 @@
 <table class="table">
     <thead>
         <tr>
-            @foreach (var header in Headers)
+            @foreach (var header in ResponsePaginated?.Headers ?? new List<string>())
             {
                 <th>@header</th>
             }
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Items)
+        @foreach (var item in ResponsePaginated?.List ?? new List<TItem>())
         {
             <tr>
-                @foreach (var template in ColumnTemplates)
+                @foreach (var template in ResponsePaginated?.ColumnsTemplates)
                 {
                     <td>@template(item)</td>
                 }
@@ -24,13 +24,7 @@
 
 @code {
 
-    [Parameter]
-    public IEnumerable<TItem> Items { get; set; }
-
-    [Parameter]
-    public List<string> Headers { get; set; }
-
-    [Parameter]
-    public List<Func<TItem, object>> ColumnTemplates { get; set; }
+  [Parameter]
+    public ResponsePaginated<TItem>? ResponsePaginated { get; set; }
 
 }
