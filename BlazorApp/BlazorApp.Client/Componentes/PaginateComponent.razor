@@ -9,7 +9,7 @@
         {
             <li class="page-item @(Pagination.Page == i ? "active" : "")">
                  @* <button class="page-link" @onclick="() =>  OnPageSelected(i)">@i</button> *@
-                <button class="page-link" >@i</button>
+                <button onclick="callBlazorFunction(@i)" class="page-link">@i</button>
                 
             </li>
         }
@@ -22,10 +22,19 @@
 
 @code {
 
+
+   [JSInvokable]
+    public static async Task OnPageSelectedJs(int pageNumber)
+    {
+         Console.WriteLine($"Página selecionada: {pageNumber}");
+        // Aqui você pode atualizar o estado da página, fazer chamadas a API, etc.
+    }
+
     async Task OnPageSelected(int page)
     {
+        Pagination.Page = page;
         await PageSelected.InvokeAsync(page);
-        Pagination.Page = page; 
+    
     }   
 
     [Parameter]

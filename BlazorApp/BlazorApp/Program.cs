@@ -2,6 +2,7 @@ using BlazorApp.Client.Models;
 using BlazorApp.Client.Pages;
 using BlazorApp.Components;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Server;
 using System.ComponentModel;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -45,6 +46,9 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(BlazorApp.Client._Imports).Assembly);
+
+//builder.Services.Configure<CircuitOptions>(options => options.DetailedErrors = true);
+
 
 app.Run();
 

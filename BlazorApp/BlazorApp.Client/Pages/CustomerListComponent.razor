@@ -10,33 +10,69 @@
 Pagination=Pagination
 PageSelected=OnPageSelected
 /> *@
- 
-<TableCardPaginated ResponsePaginated="ResponsePaginatedCustomer" />
+
+<TableCardPaginated 
+PageSelected="OnPageSelected"
+ResponsePaginated="ResponsePaginatedCustomer" />
 
 
 @code {
     List<Customers> Customers = new List<Customers>();
-    ResponseCustomerPaginated? ResponsePaginatedCustomer;
+    ResponseCustomerPaginated? ResponsePaginatedCustomer  = new ResponseCustomerPaginated(new List<Customers>(),new Pagination());
     BlazorApp.Client.Models.Pagination Pagination = new Pagination();
+
+    // async Task OnPageSelected(int page)
+    // {
+    //     await Task.Run(() => {
+    //         JSRuntime.InvokeVoidAsync("alert", $"Page {page} selected");
+    //     }); 
+    // }
+
 
     async Task OnPageSelected(int page)
     {
-        await Task.Run(() => {
-            JSRuntime.InvokeVoidAsync("alert", $"Page {page} selected");
-        }); 
-    }   
+
+        Pagination.Page = page;
+        Pagination.QtdItens = Customers.Count;
+        var customer = await GetCustomersPaginated(new Customers(),
+           Pagination
+        );
+        ResponsePaginatedCustomer = new ResponseCustomerPaginated(itens: customer,
+        pagination: Pagination);
+
+    }
 
 
+    async Task<List<Customers>> GetCustomersPaginated(Customers customer,
+        PaginationRequest paginationRequest)
+    {
+
+        var query = Customers.AsQueryable();   
+        if (!string.IsNullOrEmpty(customer.Name))
+            query = query.Where(x => x.Name.Equals(customer.Name));
+
+        query = query.Skip((paginationRequest.Page - 1) * paginationRequest.Length)
+                      .Take(paginationRequest.Length);
+
+        return await Task.Run(() => query.ToList());
+    }
 
 
-
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         Customers = CustomerGenerator.GenerateCustomers(100);
         Pagination = new Pagination();
-        Pagination.QtdItens = Customers.Count;  
-        ResponsePaginatedCustomer = new ResponseCustomerPaginated(itens: Customers,
-            pagination: Pagination);
+        Pagination.QtdItens = Customers.Count;
+        var customer = await GetCustomersPaginated(new Customers(),
+            new PaginationRequest()
+        );
+        ResponsePaginatedCustomer = new ResponseCustomerPaginated(itens: customer,
+        pagination: Pagination);
+    }
+
+    protected override void OnInitialized()
+    {
+       
     }
 
 
