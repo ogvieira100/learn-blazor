@@ -1,0 +1,38 @@
+﻿@rendermode InteractiveAuto
+<nav>
+    <ul class="pagination">
+        <li class="page-item @(Pagination.Page == 1 ? "disabled" : "")">
+            <button class="page-link" @onclick="() => OnPageSelected(Pagination.Page - 1)">Anterior</button>
+        </li>
+
+        @for (int i = 1; i <= Pagination.QtdPages; i++)
+        {
+            <li class="page-item @(Pagination.Page == i ? "active" : "")">
+                 @* <button class="page-link" @onclick="() =>  OnPageSelected(i)">@i</button> *@
+                <button class="page-link" >@i</button>
+                
+            </li>
+        }
+
+        <li class="page-item @(Pagination.Page == Pagination.QtdPages ? "disabled" : "")">
+            <button class="page-link" @onclick="() => OnPageSelected(Pagination.Page + 1)">Próximo</button>
+        </li>
+    </ul>
+</nav>
+
+@code {
+
+    async Task OnPageSelected(int page)
+    {
+        await PageSelected.InvokeAsync(page);
+        Pagination.Page = page; 
+    }   
+
+    [Parameter]
+    public EventCallback<int> PageSelected { get; set; }
+
+    [Parameter]
+    public Pagination? Pagination { get; set; }
+
+
+}

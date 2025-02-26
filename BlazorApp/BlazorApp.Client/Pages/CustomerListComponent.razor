@@ -1,0 +1,33 @@
+﻿@page "/customerlist" 
+@rendermode InteractiveAuto 
+@inject IJSRuntime JSRuntime
+
+
+
+<h3>Customer List</h3> 
+
+<PaginateComponent 
+    Pagination=Pagination
+    PageSelected=OnPageSelected
+    />
+
+
+@code {
+
+
+    async Task OnPageSelected(int page)
+    {
+        await Task.Run(() => {
+            JSRuntime.InvokeVoidAsync("alert", $"Page {page} selected");
+        }); 
+    }   
+
+    Pagination Pagination = new Pagination();
+
+    protected override void OnInitialized()
+    {
+        Pagination.QtdItens = 100;
+    }
+
+
+}
