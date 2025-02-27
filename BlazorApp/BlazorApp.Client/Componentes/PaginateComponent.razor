@@ -1,16 +1,26 @@
 ﻿@rendermode InteractiveAuto
 <nav>
     <ul class="pagination">
-        <li class="page-item @(Pagination.Page == 1 ? "disabled" : "")">
+        <label for="pageSize">Page Size: </label>
+        <select 
+        @onchange="HandlePageSizeChange"
+        value=@Pagination.Length
+        id="pageSize">
+            @foreach (var size in PageSizes)
+            {
+                <option value="@size">@size</option>
+            }
+        </select>
+        <li  class="page-item @(Pagination.Page == 1 ? "disabled" : "")">
             <button class="page-link" @onclick="() => OnPageSelected(Pagination.Page - 1)">Anterior</button>
         </li>
-
-        @for (int i = 1; i <= Pagination.QtdPages; i++)
+        @foreach (var i in Enumerable.Range(1, Pagination.QtdPages))
         {
             <li class="page-item @(Pagination.Page == i ? "active" : "")">
-                 @* <button class="page-link" @onclick="() =>  OnPageSelected(i)">@i</button> *@
-                <button onclick="callBlazorFunction(@i)" class="page-link">@i</button>
-                
+
+                <button @onclick="() => OnPageSelected(i)" class="page-link @(Pagination.Page == i ? "active" : "")">
+                    @i
+                </button>
             </li>
         }
 
@@ -18,30 +28,48 @@
             <button class="page-link" @onclick="() => OnPageSelected(Pagination.Page + 1)">Próximo</button>
         </li>
     </ul>
-</nav>
+</nav> 
+
+
 
 @code {
 
-
-   [JSInvokable]
-    public static async Task OnPageSelectedJs(int pageNumber)
-    {
-         Console.WriteLine($"Página selecionada: {pageNumber}");
-        // Aqui você pode atualizar o estado da página, fazer chamadas a API, etc.
-    }
-
-    async Task OnPageSelected(int page)
-    {
-        Pagination.Page = page;
-        await PageSelected.InvokeAsync(page);
-    
-    }   
+    [Parameter] public int DefaultPageSize { get; set; } = 10;
 
     [Parameter]
     public EventCallback<int> PageSelected { get; set; }
 
     [Parameter]
+    public EventCallback<int> PageLengthChanged { get; set; }
+
+    [Parameter]
     public Pagination? Pagination { get; set; }
 
+    async Task HandlePageSizeChange(ChangeEventArgs e)
+    {
+        var selectedValue = e.Value?.ToString();
+        if (int.TryParse(selectedValue, out int pageSize))
+        {
+            Pagination.Length = pageSize;
+            Pagination.Page = 1;
+            await PageLengthChanged.InvokeAsync(pageSize);
+        }
+    }
+
+
+
+    readonly int[] PageSizes = new[] { 5, 10, 20, 50 };
+
+    private int CurrentPage { get; set; } = 1;
+
+    protected override void OnInitialized()
+    {
+        
+    }
+    async Task OnPageSelected(int page)
+    {
+        Pagination.Page = page;
+        await PageSelected.InvokeAsync(page);
+    }   
 
 }

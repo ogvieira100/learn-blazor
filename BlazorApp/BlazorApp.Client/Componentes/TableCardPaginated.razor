@@ -21,17 +21,27 @@
     </tbody>
 </table>
 <PaginateComponent 
-Pagination="ResponsePaginated.Pagination"
-PageSelected="OnPageSelected" />
+    Pagination="ResponsePaginated.Pagination"
+    PageLengthChanged="OnPageLengthChanged"
+    PageSelected="OnPageSelected" />
 
 @code {
 
     [Parameter]
     public ResponsePaginated<TItem>? ResponsePaginated { get; set; }
 
-
     [Parameter]
     public EventCallback<int> PageSelected { get; set; }
+
+    [Parameter]
+    public EventCallback<int> PageLengthChanged { get; set; }
+
+    async Task OnPageLengthChanged(int page)
+    {
+
+        await PageLengthChanged.InvokeAsync(page);
+
+    }
 
     async Task OnPageSelected(int page)
     {

@@ -6,14 +6,12 @@
 
 <h3>Customer List</h3> 
 
-@* <PaginateComponent 
-Pagination=Pagination
-PageSelected=OnPageSelected
-/> *@
+
 
 <TableCardPaginated 
-PageSelected="OnPageSelected"
-ResponsePaginated="ResponsePaginatedCustomer" />
+     PageSelected="OnPageSelected" 
+     PageLengthChanged="OnPageLengthChanged"
+     ResponsePaginated="ResponsePaginatedCustomer" />
 
 
 @code {
@@ -28,6 +26,19 @@ ResponsePaginated="ResponsePaginatedCustomer" />
     //     }); 
     // }
 
+
+    async Task OnPageLengthChanged(int size)
+    {
+        
+        Pagination.Length = size;
+        Pagination.QtdItens = Customers.Count;
+        var customer = await GetCustomersPaginated(new Customers(),
+           Pagination
+        );
+        ResponsePaginatedCustomer = new ResponseCustomerPaginated(itens: customer,
+        pagination: Pagination);
+    
+    }
 
     async Task OnPageSelected(int page)
     {
