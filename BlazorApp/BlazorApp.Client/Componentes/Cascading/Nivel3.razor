@@ -1,7 +1,19 @@
-﻿<div style="background-color:@StyleContext.BackgroundColor; padding: 10px;">
-    <p>Componente de Nível 3</p>
-    <Nivel4 />
-</div>
+﻿@if (StyleContext != null)
+{
+    <div style="background-color:@StyleContext.BackgroundColor; padding: 10px;">
+        <p>Componente de Nível 3</p>
+        <Nivel4 />
+    </div>
+}
+else
+{
+    <div>
+        <p>
+            Loading.....
+        </p>
+    </div>
+
+}
 
 @code {
     [CascadingParameter]
