@@ -1,5 +1,6 @@
 ﻿@page "/modal"
 @rendermode InteractiveAuto
+@inject IJSRuntime JS
 
 <h3>ModalComponent</h3>
 
@@ -29,5 +30,10 @@
 </div>
 
 @code {
+
+    private async Task Show()
+    {
+       // await JS.InvokeVoidAsync("bootstrapModal.show", ModalId);
+    }
 
 }
