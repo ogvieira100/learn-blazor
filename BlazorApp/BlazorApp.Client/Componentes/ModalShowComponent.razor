@@ -1,0 +1,46 @@
+﻿@inject IJSRuntime JS
+
+<div class="modal fade" id="@ModalId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@Title</h5>
+                <button type="button" class="btn-close" aria-label="Close" @onclick="Close"></button>
+            </div>
+            <div class="modal-body">
+                @ChildContent
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="Close">Fechar</button>
+                <button type="button" class="btn btn-primary" @onclick="Confirm">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string ModalId { get; set; } = Guid.NewGuid().ToString();
+    [Parameter] public string Title { get; set; } = "Título do Modal";
+    [Parameter] public EventCallback OnConfirm { get; set; } = EventCallback.Empty;
+    [Parameter] public EventCallback OnClose { get; set; } = EventCallback.Empty;
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+     async Task Show()
+    {
+        await JS.InvokeVoidAsync("bootstrapModal.show", ModalId);
+    }
+
+     async Task Close()
+    {
+        
+        await OnClose.InvokeAsync();
+        await JS.InvokeVoidAsync("bootstrapModal.hide", ModalId);
+    }
+     async Task Confirm()
+    {
+        await OnConfirm.InvokeAsync();
+        await Close();
+    }
+
+    public async Task OpenModal() => await Show();
+}

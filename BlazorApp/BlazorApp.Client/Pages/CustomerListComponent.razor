@@ -19,12 +19,6 @@
     ResponseCustomerPaginated? ResponsePaginatedCustomer  = new ResponseCustomerPaginated(new List<Customers>(),new Pagination());
     BlazorApp.Client.Models.Pagination Pagination = new Pagination();
 
-    // async Task OnPageSelected(int page)
-    // {
-    //     await Task.Run(() => {
-    //         JSRuntime.InvokeVoidAsync("alert", $"Page {page} selected");
-    //     }); 
-    // }
 
 
     async Task OnPageLengthChanged(int size)
