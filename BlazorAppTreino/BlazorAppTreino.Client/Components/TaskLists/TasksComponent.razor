@@ -1,0 +1,151 @@
+﻿
+@rendermode InteractiveAuto
+@inject IJSRuntime JSRuntime    
+
+
+<div class=@GetCardClass()>
+    <div class="card-header">
+        @GetStatus()
+           
+    </div>
+    <div class="card-body">
+        <div class="card-title">
+            <h5>@Task?.Name</h5>
+            <button @onclick=DeleteTaskAsync type="button" class="btn-close" aria-label="Close">
+
+            </button>
+        </div>
+        @if (Task?.TaskStatus == BlazorAppTreino.Domain.Models.TaskStatus.NotStarted
+        )
+        {
+            <button @onclick=InitTaskAsync class="btn btn-primary">
+                Iniciar
+            </button>
+        }
+        else if (Task?.TaskStatus == BlazorAppTreino.Domain.Models.TaskStatus.InProgress)
+        {
+            <button @onclick=EndTaskAsync class="btn btn-success">
+                Finalizar
+            </button>
+            <button @onclick=SendInitialAsync class="btn btn-primary">
+                Voltar para o início
+            </button>
+        }
+        else if (Task?.TaskStatus == BlazorAppTreino.Domain.Models.TaskStatus.Completed)
+        {
+            <button @onclick=SendInProgressAsync class="btn btn-warning">
+                Voltar para em andamento
+            </button>
+            <button @onclick=SendInitialAsync class="btn btn-primary">
+                Voltar para o inicio
+            </button>
+        }   
+    </div>
+    <div class="card-footer text-body-secondary">
+        @GetStatusCard()
+    </div>
+</div>
+
+@code {
+
+
+    string GetCardClass()
+    => Task?.TaskStatus switch
+    {
+        BlazorAppTreino.Domain.Models.TaskStatus.NotStarted => @"card text-bg-primary mb-3",
+        BlazorAppTreino.Domain.Models.TaskStatus.InProgress => "card text-bg-warning mb-3",
+        BlazorAppTreino.Domain.Models.TaskStatus.Completed => "card text-bg-success mb-3",
+        _ => ""
+    };  
+
+
+    protected override void OnParametersSet()
+    {
+        if (Task != null)
+        {
+            Task.UpdateTast += (taskStatus) =>
+            {
+                return UpdateTask(taskStatus);
+            };
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+       
+    }
+
+    string GetStatusCard()
+    => $" Nome Tarefa: {Task?.Name ?? ""} Data inclusão: {Task?.DateCreated} Data da atualização: {Task?.DateUpdated} ";
+    
+    
+    public async Task UpdateTask(BlazorAppTreino.Domain.Models.TaskStatus taskStatus)
+    {
+        this.Task!.TaskStatus = taskStatus;
+        this.Task!.DateUpdated = DateTime.Now;
+       
+            await TaskUpdated.InvokeAsync();
+    }   
+
+    async Task DeleteTaskAsync()
+    {
+        bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm", $"Você deseja deletar essa tarefa? {Task?.Name}");
+        if (confirmed)
+        await TaskDeleted.InvokeAsync(this.Task);
+    }   
+
+    async Task SendInProgressAsync()
+    {
+        this.Task!.DateUpdated = DateTime.Now;
+        this.Task!.TaskStatus = BlazorAppTreino.Domain.Models.TaskStatus.InProgress;
+        
+            await TaskUpdated.InvokeAsync();
+
+    }
+
+    async Task SendInitialAsync()
+    {
+        this.Task!.DateUpdated = DateTime.Now;
+        this.Task!.TaskStatus = BlazorAppTreino.Domain.Models.TaskStatus.NotStarted;
+       
+            await TaskUpdated.InvokeAsync();
+
+    }
+
+    async Task EndTaskAsync() { 
+        this.Task!.DateUpdated = DateTime.Now;
+        this.Task!.TaskStatus = BlazorAppTreino.Domain.Models.TaskStatus.Completed;
+      
+            await TaskUpdated.InvokeAsync();
+    
+    }
+
+    async Task InitTaskAsync()
+    {
+        this.Task!.DateUpdated = DateTime.Now;
+        this.Task!.TaskStatus = BlazorAppTreino.Domain.Models.TaskStatus.InProgress;
+       
+        await  TaskUpdated.InvokeAsync();
+    }   
+
+    string GetStatus()
+    {
+        return Task?.TaskStatus switch
+        {
+            BlazorAppTreino.Domain.Models.TaskStatus.NotStarted => "Não iniciada",
+            BlazorAppTreino.Domain.Models.TaskStatus.InProgress => "Em progresso",
+            BlazorAppTreino.Domain.Models.TaskStatus.Completed => "Finalizada",
+            _ => ""
+        };
+    }   
+
+    [Parameter]
+    public Tasks? Task { get; set; }
+
+    [Parameter]
+    public EventCallback TaskUpdated { get; set; }
+
+    [Parameter]
+    public EventCallback<Tasks> TaskDeleted { get; set; }
+
+}

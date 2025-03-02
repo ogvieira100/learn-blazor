@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAppTreino", "BlazorAppTreino\BlazorAppTreino\BlazorAppTreino.csproj", "{8100054C-BF34-40BD-8510-8557D07B1EF4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAppTreino.Client", "BlazorAppTreino\BlazorAppTreino.Client\BlazorAppTreino.Client.csproj", "{C214F1ED-6285-46EE-8428-891A476D757C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAppTreino.Domain", "BlazorAppTreino.Domain\BlazorAppTreino.Domain.csproj", "{6460FEA8-562E-5FA0-537E-2C1C5B43DA8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C214F1ED-6285-46EE-8428-891A476D757C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C214F1ED-6285-46EE-8428-891A476D757C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C214F1ED-6285-46EE-8428-891A476D757C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6460FEA8-562E-5FA0-537E-2C1C5B43DA8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6460FEA8-562E-5FA0-537E-2C1C5B43DA8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6460FEA8-562E-5FA0-537E-2C1C5B43DA8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6460FEA8-562E-5FA0-537E-2C1C5B43DA8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

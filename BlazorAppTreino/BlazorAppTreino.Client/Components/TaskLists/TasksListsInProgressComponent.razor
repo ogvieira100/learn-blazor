@@ -1,0 +1,84 @@
+﻿<div class="card text-center">
+    <div class="card-header">
+        Tarefas em andamento
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Tarefas</h5>
+
+        @foreach (var item in Tasks.Where(x => x.TaskStatus == BlazorAppTreino.Domain.Models.TaskStatus.InProgress))
+        {
+            <TasksComponent Task="item"
+                            TaskDeleted="TaskDeleted"
+                            TaskUpdated="TaskUpdated" />
+        }
+        @if (Tasks.Any(x => x.TaskStatus == BlazorAppTreino.Domain.Models.TaskStatus.InProgress))
+        {
+            <button @onclick=InitialAll class="btn btn-primary">
+                Voltar para Iniciar tarefa(s)
+            </button>
+            <button @onclick=FinalyAll class="btn btn-primary">
+                Finalizar todas as tarefa(s)
+            </button>
+        }
+
+    </div>
+    <div class="card-footer text-body-secondary">
+        @GetCountComponent()
+    </div>
+</div>
+
+@code {
+    async Task FinalyAll()
+    {
+        foreach (var item in Tasks.Where(x => x.TaskStatus == BlazorAppTreino.Domain.Models.TaskStatus.InProgress))
+        {
+            var taskUpdated = item.UpdateTast?.Invoke(BlazorAppTreino.Domain.Models.TaskStatus.Completed);
+            if (taskUpdated != null)
+                await Task.WhenAll(taskUpdated);
+        }
+
+    }
+    async Task InitialAll()
+    {
+
+        foreach (var item in Tasks.Where(x => x.TaskStatus == BlazorAppTreino.Domain.Models.TaskStatus.InProgress))
+        {
+            var taskUpdated = item.UpdateTast?.Invoke(BlazorAppTreino.Domain.Models.TaskStatus.NotStarted);
+            if (taskUpdated != null)
+                await Task.WhenAll(taskUpdated);
+        }
+    }
+
+    string GetCountComponent()
+    => $" Total de tarefas em andamento: {Tasks.Where(x => x.TaskStatus == BlazorAppTreino.Domain.Models.TaskStatus.InProgress).Count()}";
+
+
+    public async Task UpdateComponent()
+    {
+        await InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
+    }
+
+    async Task TaskUpdated()
+    {
+        StateHasChanged();
+        await TasksUpdated.InvokeAsync(BlazorAppTreino.Domain.Models.TaskStatus.NotStarted);
+    }
+
+    async Task TaskDeleted(BlazorAppTreino.Domain.Models.Tasks task)
+    {
+        Tasks.Remove(task);
+        await TasksUpdated.InvokeAsync(BlazorAppTreino.Domain.Models.TaskStatus.NotStarted);
+    }
+
+    [Parameter]
+    public EventCallback<BlazorAppTreino.Domain.Models.TaskStatus> TasksUpdated { get; set; }
+
+
+    [Parameter]
+    public List<Tasks> Tasks { get; set; } = new
+    List<Tasks>();
+
+}

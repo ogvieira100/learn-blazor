@@ -1,0 +1,69 @@
+﻿<div class="card text-center">
+    <div class="card-header">
+        Tarefas não iniciadas 
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Tarefas</h5>
+
+        @foreach (var item in Tasks.Where(x=>x.TaskStatus == BlazorAppTreino.Domain.Models.TaskStatus.NotStarted))
+        {
+            <TasksComponent
+            Task="item"
+            TaskDeleted="TaskDeleted"
+            TaskUpdated="TaskUpdated" />
+        }
+        @if (Tasks.Any(x => x.TaskStatus == BlazorAppTreino.Domain.Models.TaskStatus.NotStarted))
+        {
+            <button @onclick=InitialAll class="btn btn-primary">
+                Iniciar tarefa(s)
+            </button>
+        }
+    </div>
+    <div class="card-footer text-body-secondary">
+        @GetCountComponent()
+    </div>
+</div>
+
+@code {
+    async Task InitialAll()
+    { 
+
+        foreach (var item in Tasks.Where(x => x.TaskStatus == BlazorAppTreino.Domain.Models.TaskStatus.NotStarted))
+        {
+            var taskUpdated =  item.UpdateTast?.Invoke(BlazorAppTreino.Domain.Models.TaskStatus.InProgress);
+            if (taskUpdated != null)
+                await Task.WhenAll(taskUpdated);
+        }   
+    }
+
+    string GetCountComponent()
+    => $" Total de tarefas não iniciadas: {Tasks.Where(x=>x.TaskStatus == BlazorAppTreino.Domain.Models.TaskStatus.NotStarted).Count()}";  
+
+
+    public async Task UpdateComponent() { 
+        await InvokeAsync(() =>
+        {
+            StateHasChanged();
+        }); 
+    }
+
+    async Task TaskDeleted(BlazorAppTreino.Domain.Models.Tasks task) { 
+        Tasks.Remove(task);
+        await TasksUpdated.InvokeAsync(BlazorAppTreino.Domain.Models.TaskStatus.NotStarted);
+    }   
+
+    async Task TaskUpdated() { 
+       
+         StateHasChanged();
+         await TasksUpdated.InvokeAsync(BlazorAppTreino.Domain.Models.TaskStatus.NotStarted);
+    }
+
+    [Parameter]
+    public EventCallback<BlazorAppTreino.Domain.Models.TaskStatus> TasksUpdated { get; set; }
+
+
+    [Parameter]
+    public List<Tasks> Tasks { get; set; } = new
+    List<Tasks>();
+
+}
