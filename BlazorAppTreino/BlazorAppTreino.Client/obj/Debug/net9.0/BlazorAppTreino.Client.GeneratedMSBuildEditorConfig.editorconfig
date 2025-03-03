@@ -24,6 +24,10 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/Bootstrap/BootstrapCardComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCb290c3RyYXBcQm9vdHN0cmFwQ2FyZENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/Bootstrap/ModalComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCb290c3RyYXBcTW9kYWxDb21wb25lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -50,6 +54,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/Cascading/Nivel4Component.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDYXNjYWRpbmdcTml2ZWw0Q29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/Customers/BootstrapCardCustomerComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDdXN0b21lcnNcQm9vdHN0cmFwQ2FyZEN1c3RvbWVyQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/Customers/CustomersEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDdXN0b21lcnNcQ3VzdG9tZXJzRWRpdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/Customers/CustomersFilters.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDdXN0b21lcnNcQ3VzdG9tZXJzRmlsdGVycy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/Customers/CustomersGrid.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDdXN0b21lcnNcQ3VzdG9tZXJzR3JpZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/Customers/CustomersNew.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDdXN0b21lcnNcQ3VzdG9tZXJzTmV3LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/PaginateComponent.razor]
@@ -86,6 +110,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Pages/Bind.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmluZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Pages/BootstrapCard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9vdHN0cmFwQ2FyZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Pages/Cascading.razor]

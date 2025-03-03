@@ -2124,6 +2124,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "9.0.2",
           "Microsoft.EntityFrameworkCore": "9.0.2",
           "Microsoft.EntityFrameworkCore.Proxies": "9.0.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.2"
@@ -5847,6 +5848,7 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "BlazorAppTreino.Client >= 1.0.0",
+      "BlazorAppTreino.Domain >= 1.0.0",
       "Microsoft.AspNetCore.Components.WebAssembly.Server >= 9.0.2",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 9.0.2",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 9.0.2",
@@ -5889,6 +5891,9 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
+            "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino.Domain\\BlazorAppTreino.Domain.csproj": {
+              "projectPath": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino.Domain\\BlazorAppTreino.Domain.csproj"
+            },
             "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj": {
               "projectPath": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj"
             }

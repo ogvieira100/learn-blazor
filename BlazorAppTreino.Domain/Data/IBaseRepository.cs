@@ -1,4 +1,5 @@
 ﻿
+using BlazorAppTreino.Data;
 using BlazorAppTreino.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -19,10 +20,10 @@ namespace BlazorAppTreino.Domain.Data
 
         readonly DbSet<TEntity> DbSet;
 
-        readonly DbContext _applicationContext;
+        readonly ApplicationDbContext _applicationContext;
         public BaseRepository(IUnitOfWork unitOfWork,
                               IRepositoryConsult<TEntity> repositoryConsult,
-                              DbContext applicationContext)
+                              ApplicationDbContext applicationContext)
         {
 
             _applicationContext = applicationContext;

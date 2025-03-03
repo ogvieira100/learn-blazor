@@ -1,0 +1,51 @@
+﻿<div class="card text-center">
+    @if (Header != null)
+    {
+        <div class="card-header">
+            @Header
+        </div>
+    }
+    <div class="card-body">
+        @if (Title != null)
+        {
+            <h5 class="card-title">@Title</h5>
+        }
+        @if (Description != null)
+        {
+            <p class="card-text">@Description</p>
+        }
+        @Body
+    </div>
+    @if (Footer != null)
+    {
+        <div class="card-footer text-body-secondary">
+            @Footer
+        </div>
+    }
+</div>
+
+@code {
+
+
+    protected override void OnInitialized()
+    {
+
+    }
+
+
+    [Parameter]
+    public string? Title { get; set; }
+
+    [Parameter]
+    public string? Description { get; set; }
+  
+    [Parameter]
+    public RenderFragment? Header { get; set; }
+
+    [Parameter]
+    public RenderFragment? Body { get; set; }
+
+    [Parameter]
+    public RenderFragment? Footer { get; set; }
+
+}

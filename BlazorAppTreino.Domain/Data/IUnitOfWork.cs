@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BlazorAppTreino.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,9 @@ namespace BlazorAppTreino.Domain.Data
 
     public class UnitOfWork : IUnitOfWork
     {
-        readonly DbContext _dbContext;
+        readonly ApplicationDbContext _dbContext;
 
-        public UnitOfWork(DbContext dbContext)
+        public UnitOfWork(ApplicationDbContext dbContext)
         {
 
             _dbContext = dbContext;

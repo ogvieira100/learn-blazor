@@ -52,6 +52,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.2, )"
@@ -219,6 +223,9 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
+              "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino.Domain\\BlazorAppTreino.Domain.csproj": {
+                "projectPath": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino.Domain\\BlazorAppTreino.Domain.csproj"
+              },
               "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj": {
                 "projectPath": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj"
               }

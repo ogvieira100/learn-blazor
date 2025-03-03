@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BlazorAppTreino.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +12,14 @@ namespace BlazorAppTreino.Domain.Data
     public class RepositoryConsult<TEntity> : IRepositoryConsult<TEntity> where TEntity : class
     {
 
-        readonly DbContext _context;
+        readonly ApplicationDbContext _context;
         protected readonly DbSet<TEntity> DbSet;
 
-        public RepositoryConsult(DbContext Context)
+        public RepositoryConsult(ApplicationDbContext Context)
         {
             _context = Context;
             DbSet = _context.Set<TEntity>();
         }
-
         public void Dispose() => GC.SuppressFinalize(this);
         public async Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate) => await DbSet.AnyAsync(predicate);
         public async Task<IEnumerable<TEntity>> GetAllAsync() => await DbSet.ToListAsync();

@@ -1,0 +1,53 @@
+﻿@page "/bootstrapCard"
+@rendermode InteractiveAuto
+@inject IJSRuntime JS
+
+<h3>BootstrapCard</h3>
+
+<BootstrapCardComponent 
+    Title="Card de exemplos de comunicação de componentes"
+    Description="Esse é nosso card"
+>
+    <Header>
+    </Header>
+    <Body>
+        <button type="button"
+            @onclick=@(async (MouseEventArgs mouseArgs)=>{
+                Message = $"Posição do click x={mouseArgs.ScreenX} y={mouseArgs.ScreenY} ";
+                ModalComponent.Title = "Atenção escolha";
+                await ModalComponent?.OpenModal();
+            })
+            class="btn btn-primary">Simples Evento</button>
+    </Body>
+    <Footer>
+    </Footer>
+</BootstrapCardComponent>
+
+<ModalComponent
+    
+                @ref="ModalComponent"
+                OnConfirm="ConfirmAsync"
+                OnClose="CloseAsync">
+    <ChildContent>
+        @Message
+    </ChildContent>
+</ModalComponent>
+
+@code {
+
+    string? Message;
+    ModalComponent? ModalComponent;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+    async Task ConfirmAsync()
+    {
+        await JS.InvokeVoidAsync("alert", "Clicou em confirm.");
+    }
+    async Task CloseAsync()
+    {
+        await JS.InvokeVoidAsync("alert", "Clicou em close.");
+    }
+}

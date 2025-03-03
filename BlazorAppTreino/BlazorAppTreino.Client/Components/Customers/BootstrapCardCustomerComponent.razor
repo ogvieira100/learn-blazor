@@ -1,0 +1,43 @@
+﻿<h3>BootstrapCardCustomerComponent</h3>
+
+<BootstrapCardComponent>
+    <Header>
+
+    </Header>
+    <Body>
+
+    </Body>
+    <Footer>
+
+    </Footer>
+</BootstrapCardComponent>
+
+<ModalComponent>
+
+</ModalComponent>
+
+@code {
+
+    Customers? Customers;
+
+    [Parameter]
+    public EventCallback ClickBtn { get; set; }
+
+    [Parameter]
+    public EventCallback<string> ClickBtnChangeDescription { get; set; }
+
+    [Parameter]
+    public EventCallback<Customers> ClickBtnChangeCustomer { get; set; }
+
+    [Parameter]
+    public Func<string, Task<string>>? ClickBtnChangeDescriptionReturn { get; set; }
+
+    [Parameter]
+    public Func<Customers, Task<Customers>>? ClickBtnChangeCustomerReturn { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Customers = new Customers();
+    }
+
+}
