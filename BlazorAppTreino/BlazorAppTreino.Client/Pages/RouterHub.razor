@@ -1,0 +1,65 @@
+﻿<h3>RouterHub</h3>
+@page "/router"
+@page "/router-123"
+@page "/router-123/{id}"
+@page "/router-123/{group}/{id}"
+@page "/routing/{*all}"
+@inject NavigationManager NavigationManager;
+@rendermode InteractiveAuto
+
+<div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+    <div class="card-header">Header</div>
+    <div class="card-body">
+        <h5 class="card-title">Parameters</h5>
+        <p>Id</p>
+        <p class="card-text">
+            @Id
+        </p>
+        <p>Group</p>
+        <p class="card-text">
+            @Group
+        </p>
+        <p>All</p>
+        <p class="card-text">
+            @All
+        </p>
+        <p>
+            QueryString: @Name - @Name2
+        </p>
+        <p>
+            Navegação
+        </p>
+        <p>
+            <input type="text" name="input" @bind="Router" />
+        </p>
+        <p>
+            <button class="btn btn-primary"
+                    @onclick="Navigate">
+                Router
+            </button>
+        </p>
+    </div>
+</div>
+
+
+@code {
+
+    public string? Router { get; set; }
+
+    [Parameter]
+    public string? Id { get; set; }
+    [Parameter]
+    public string? Group { get; set; }
+    [Parameter]
+    public string? All { get; set; }
+    [SupplyParameterFromQuery]
+    public string? Name { get; set; }
+    [SupplyParameterFromQuery(Name = "Name2")]
+    public string? Name2 { get; set; }
+
+    public void Navigate()
+    {
+        NavigationManager.NavigateTo(Router ?? "/");
+    }
+
+}

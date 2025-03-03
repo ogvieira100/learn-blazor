@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{8100054C-BF34-40BD-8510-8557D07B1EF4}|BlazorAppTreino\\BlazorAppTreino\\BlazorAppTreino.csproj|solutionrelative:blazorapptreino\\blazorapptreino\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|d:\\projetos\\blazor\\auto\\blazorapp\\blazorapptreino\\blazorapptreino.client\\pages\\routerhub.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|solutionrelative:blazorapptreino\\blazorapptreino.client\\pages\\routerhub.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|d:\\projetos\\blazor\\auto\\blazorapp\\blazorapptreino\\blazorapptreino.client\\pages\\lifecirclecomponents.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|solutionrelative:blazorapptreino\\blazorapptreino.client\\pages\\lifecirclecomponents.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -58,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -75,6 +79,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "RouterHub.razor",
+              "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\RouterHub.razor",
+              "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\RouterHub.razor",
+              "ToolTip": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\RouterHub.razor",
+              "RelativeToolTip": "BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\RouterHub.razor",
+              "ViewState": "AgIAACcAAAAAAAAAAAAiwC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-03T20:11:34.333Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "LifeCircleComponents.razor",
               "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\LifeCircleComponents.razor",
               "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\LifeCircleComponents.razor",
@@ -87,7 +104,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ModalComponent.razor",
               "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Bootstrap\\ModalComponent.razor",
               "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Bootstrap\\ModalComponent.razor",
@@ -100,7 +117,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Pagination.cs",
               "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino.Domain\\Models\\Pagination.cs",
               "RelativeDocumentMoniker": "BlazorAppTreino.Domain\\Models\\Pagination.cs",
@@ -113,7 +130,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "PagedDataResponseExtension.cs",
               "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino.Domain\\Data\\PagedDataResponseExtension.cs",
               "RelativeDocumentMoniker": "BlazorAppTreino.Domain\\Data\\PagedDataResponseExtension.cs",
@@ -126,7 +143,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "PagedDataResponse.cs",
               "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino.Domain\\Models\\PagedDataResponse.cs",
               "RelativeDocumentMoniker": "BlazorAppTreino.Domain\\Models\\PagedDataResponse.cs",
@@ -139,7 +156,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "PagedDataRequest.cs",
               "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino.Domain\\Models\\PagedDataRequest.cs",
               "RelativeDocumentMoniker": "BlazorAppTreino.Domain\\Models\\PagedDataRequest.cs",
@@ -152,7 +169,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "PaginateComponent.razor",
               "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Components\\PaginateComponent.razor",
               "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Components\\PaginateComponent.razor",
@@ -171,14 +188,14 @@
               "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino\\Components\\Layout\\NavMenu.razor",
               "ToolTip": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino\\Components\\Layout\\NavMenu.razor",
               "RelativeToolTip": "BlazorAppTreino\\BlazorAppTreino\\Components\\Layout\\NavMenu.razor",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAiwFMAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-03-03T15:44:41.447Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "_Imports.razor",
               "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\_Imports.razor",
               "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\_Imports.razor",
@@ -191,7 +208,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Usuario.cs",
               "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino.Domain\\Models\\Usuario.cs",
               "RelativeDocumentMoniker": "BlazorAppTreino.Domain\\Models\\Usuario.cs",
@@ -204,7 +221,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Generic.razor",
               "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\Generic.razor",
               "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\Generic.razor",
@@ -217,7 +234,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "TableCardComponent.razor",
               "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Components\\TableCardComponent.razor",
               "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Components\\TableCardComponent.razor",

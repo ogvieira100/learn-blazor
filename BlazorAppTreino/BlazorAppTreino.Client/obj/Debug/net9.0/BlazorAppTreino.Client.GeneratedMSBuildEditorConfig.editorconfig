@@ -112,6 +112,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kYWxzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Pages/RouterHub.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm91dGVySHViLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Pages/TasksListsComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFza3NMaXN0c0NvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
