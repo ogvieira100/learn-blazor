@@ -1,0 +1,46 @@
+﻿@inject StateContainerStyle State
+@implements IDisposable
+@page "/cascading2"
+@rendermode InteractiveAuto
+
+
+<h5>
+    Cascading by Dependency Injection
+</h5>
+
+<div style="background-color:@State.Color; padding: 10px;">
+    <p>Componente de Nível 1</p>
+
+    Selecione uma cor de fundo:
+    <input type="color" @bind="@State.Color" @oninput="OnColorChanged" />
+
+</div>
+
+<Nivel2ByComponent />
+@code {
+
+
+    private void OnColorChanged(ChangeEventArgs e)
+    {
+        State.Color = e.Value?.ToString();
+    }
+
+
+    protected override void OnInitialized()
+    {
+        State.Notification += OnNotification;
+    
+       
+    }
+
+    void OnNotification()
+    {
+     
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        State.Notification -= OnNotification;
+    }
+}

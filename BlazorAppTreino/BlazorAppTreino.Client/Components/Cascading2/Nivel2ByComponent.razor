@@ -1,0 +1,37 @@
+﻿@inject StateContainerStyle State
+@implements IDisposable
+@rendermode InteractiveAuto
+
+<div style="background-color:@State.Color; padding: 10px;">
+    <p>Componente de Nível 2</p>
+
+    Selecione uma cor de fundo:
+    <input type="color" @bind="@State.Color" @oninput="OnColorChanged" />
+
+</div>
+
+<Nivel3ByComponent />
+@code {
+
+
+    private void OnColorChanged(ChangeEventArgs e)
+    {
+        State.Color = e.Value?.ToString();
+    }
+    protected override void OnInitialized()
+    {
+        State.Notification += OnNotification;
+
+    }
+
+    void OnNotification()
+    {
+     
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        State.Notification -= OnNotification;
+    }
+}

@@ -5,6 +5,9 @@ using BlazorAppTreino.Client.Pages;
 using BlazorAppTreino.Components;
 using BlazorAppTreino.Components.Account;
 using BlazorAppTreino.Data;
+using Microsoft.AspNetCore.Components;
+using System.ComponentModel;
+using BlazorAppTreino.Domain.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +17,13 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents()
     .AddAuthenticationStateSerialization();
 
+builder.Services.AddCascadingValue(sp =>
+    CascadingValueSource.CreateNotifying(new StyleContext()));
+
+
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
+builder.Services.AddScoped<StateContainerStyle>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();
 
@@ -68,3 +76,16 @@ app.MapRazorComponents<App>()
 app.MapAdditionalIdentityEndpoints();
 
 app.Run();
+
+
+public static class CascadingValueSource
+{
+    public static CascadingValueSource<T> CreateNotifying<T>(T value, bool isFixed = false) where T : INotifyPropertyChanged
+    {
+        var source = new CascadingValueSource<T>(value, isFixed);
+
+        value.PropertyChanged += (sender, args) => source.NotifyChangedAsync();
+
+        return source;
+    }
+}

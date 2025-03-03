@@ -1,0 +1,11 @@
+﻿@rendermode InteractiveAuto
+    <div style="background-color:@StyleContext?.BackgroundColor; padding: 10px;">
+        <p>Componente de Nível 3</p>
+        <Nivel4Component />
+    </div>
+
+
+@code {
+    [CascadingParameter]
+    public StyleContext? StyleContext { get; set; }
+}

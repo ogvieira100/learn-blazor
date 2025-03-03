@@ -24,6 +24,30 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/Cascading2/Nivel2ByComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDYXNjYWRpbmcyXE5pdmVsMkJ5Q29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/Cascading2/Nivel3ByComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDYXNjYWRpbmcyXE5pdmVsM0J5Q29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/Cascading2/Nivel4ByComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDYXNjYWRpbmcyXE5pdmVsNEJ5Q29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/Cascading/Nivel2Component.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDYXNjYWRpbmdcTml2ZWwyQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/Cascading/Nivel3Component.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDYXNjYWRpbmdcTml2ZWwzQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/Cascading/Nivel4Component.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDYXNjYWRpbmdcTml2ZWw0Q29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/TaskLists/TaskAddComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xUYXNrTGlzdHNcVGFza0FkZENvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -46,6 +70,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Pages/Auth.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Pages/Cascading.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzY2FkaW5nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Pages/CascadingBy.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzY2FkaW5nQnkucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Pages/Counter.razor]
