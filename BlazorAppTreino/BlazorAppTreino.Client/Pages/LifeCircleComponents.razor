@@ -1,0 +1,108 @@
+﻿@page "/lifecirclecomponents"
+@implements IDisposable
+@attribute [StreamRendering]
+@rendermode InteractiveAuto
+
+<h3>Meus dados</h3>
+
+@if (data is null)
+{
+    <p><em>Carregando...</em></p>
+}
+else
+{
+    <ul>
+        @foreach (var item in data)
+        {
+            <li>@item</li>
+        }
+    </ul>
+}
+
+<button @onclick="RefreshData">Recarregar Dados</button>
+
+@code {
+    private List<string> data;
+    private System.Timers.Timer autoRefreshTimer;
+    private Random random = new Random();
+
+    // Chamado após a inicialização do componente
+    protected override async Task OnInitializedAsync()
+    {
+        autoRefreshTimer = new System.Timers.Timer(10000);
+        autoRefreshTimer.Elapsed += async (sender, args) =>
+        {
+            await InvokeAsync(async () =>
+            {
+                await RefreshData();
+            });
+        };
+        autoRefreshTimer.Start();
+        await LoadData();
+
+        Console.WriteLine("OnInitializedAsync");
+    }
+
+    // Chamado após a recepção ou mudanças de parâmetros
+    protected override async Task OnParametersSetAsync()
+    {
+        await LoadData();  // Recarregar dados se os parâmetros que afetam os dados mudarem
+
+        Console.WriteLine("OnParametersSetAsync");
+    }
+
+    // Chamado para verificar se o componente deve atualizar sua renderização
+    protected override bool ShouldRender()
+    {
+        Console.WriteLine("ShouldRender");
+        return data != null;  // Renderiza apenas quando os dados não são nulos
+    }
+
+    // Chamado após a renderização do componente
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Console.WriteLine("OnAfterRender pela primeira vez.");
+        }
+
+        Console.WriteLine("OnAfterRender");
+    }
+
+    // Método para carregar dados
+    private async Task LoadData()
+    {
+        // Simula o carregamento de dados assíncrono
+        data = await Task.Run(() => GenerateRandomData());
+        StateHasChanged();  // Notifica o Blazor que o estado do componente mudou
+    }
+
+    private List<string> GenerateRandomData()
+    {
+        var items = new List<string>();
+        int itemCount = random.Next(5, 10); // Gera entre 5 e 10 itens
+
+        for (int i = 1; i <= itemCount; i++)
+        {
+            // Cada item terá um número aleatório para fácil visualização da mudança
+            items.Add($"Item {i} - Valor {random.Next(100, 999)}");
+        }
+
+        return items;
+    }
+
+    // Método para atualizar dados manualmente
+    private async Task RefreshData()
+    {
+        await LoadData();
+        Console.WriteLine("RefreshData");
+    }
+
+    // Limpeza de recursos
+    public void Dispose()
+    {
+        autoRefreshTimer?.Stop();
+        autoRefreshTimer?.Dispose();
+        Console.WriteLine("Componente descartado e recursos liberados.");
+    }
+}
