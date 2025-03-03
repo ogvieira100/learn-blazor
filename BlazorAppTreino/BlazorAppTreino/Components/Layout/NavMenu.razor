@@ -1,6 +1,7 @@
 ﻿@implements IDisposable
-
+@inject StateContainerStyle State
 @inject NavigationManager NavigationManager
+@rendermode InteractiveServer
 
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
@@ -10,8 +11,8 @@
 
 <input type="checkbox" title="Navigation menu" class="navbar-toggler" />
 
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="nav flex-column">
+<div style="background-color:@State.Color;" class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <nav  class="nav flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                 <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
@@ -47,10 +48,9 @@
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="cascading2">
-                <span class="bi bi-lock-nav-menu" aria-hidden="true"></span> Cascading2
+                <span class="bi bi-lock-nav-menu" aria-hidden="true"></span> State Management by Dependency Injection
             </NavLink>
         </div>
-
         
 
         <AuthorizeView>
@@ -93,6 +93,12 @@
     {
         currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
         NavigationManager.LocationChanged += OnLocationChanged;
+        State.Notification += OnNotification;
+    }
+
+    void OnNotification()
+    {
+        StateHasChanged();
     }
 
     private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
@@ -103,6 +109,7 @@
 
     public void Dispose()
     {
+        State.Notification -= OnNotification;
         NavigationManager.LocationChanged -= OnLocationChanged;
     }
 }

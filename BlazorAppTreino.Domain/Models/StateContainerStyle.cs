@@ -22,7 +22,7 @@ namespace BlazorAppTreino.Domain.Models
         }
         public StateContainerStyle()
         {
-            _color = "#ADD8E6";
+            _color = "#7D6C89";
         }
 
         public Action? Notification;
