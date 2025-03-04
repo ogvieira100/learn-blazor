@@ -84,6 +84,9 @@ namespace BlazorAppTreino.Domain.Models
         [Required(ErrorMessage = "Número é requerido.")]
         [RegularExpression(@"^(SN|.{1,20})$", ErrorMessage = "O valor deve ser 'SN' ou ter no máximo 20 caracteres.")]
         public string? Number { get; set; }
+
+        public long? CustomerId { get; set; }
+        public virtual  Customers? Customer { get; set; }
     }
 
     public class Customers: EntityDataBase
@@ -101,13 +104,16 @@ namespace BlazorAppTreino.Domain.Models
         [Required(ErrorMessage = "Atenção nome requerido")]
         [Range(3, 200, ErrorMessage = "Atenção nome deve conter entre 3 a 200 caracteres")]
         public string? SurName { get; set; }
-        public List<Address> Addresses { get; set; }
+        public virtual List<Address> Addresses { get; set; }
 
         [RegularExpression(@"^\d{11}$", ErrorMessage = "CPF inválido. O CPF deve conter exatamente 11 dígitos.")]
         public string? CPF { get; set; }
+
+        
         public Customers()
         {
             Addresses = new List<Address>();
+            
         }
     }
 }

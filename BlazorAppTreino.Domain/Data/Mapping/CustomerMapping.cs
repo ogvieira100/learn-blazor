@@ -17,9 +17,31 @@ namespace BlazorAppTreino.Domain.Data.Mapping
 
             builder.Property(p => p.CPF)
                 .HasColumnName("CPF")
+                .HasMaxLength(11)
                 .IsRequired();
 
-            builder.ToTable("cliente");
+            builder.Property(p => p.Telphone)
+               .HasColumnName("Telefone")
+               .HasMaxLength(50)
+               .IsRequired(false);
+
+            builder.Property(p => p.Name)
+                .HasColumnName("Nome")
+                .HasMaxLength(100)
+                .IsRequired();
+
+
+            builder.Property(p => p.SurName)
+                .HasColumnName("SobreNome")
+                .HasMaxLength(100)
+                .IsRequired();
+
+            builder.Property(p => p.Email)
+                .HasColumnName("Email")
+                .HasMaxLength(100)
+                .IsRequired();
+
+            builder.ToTable("Cliente");
         }
     }
 }
