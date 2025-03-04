@@ -4,10 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using BlazorAppTreino.Client.Pages;
 using BlazorAppTreino.Components;
 using BlazorAppTreino.Components.Account;
-using BlazorAppTreino.Data;
+using BlazorAppTreino.Domain.Data;
 using Microsoft.AspNetCore.Components;
 using System.ComponentModel;
 using BlazorAppTreino.Domain.Models;
+using BlazorAppTreino.Domain.Data;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +44,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     .EnableSensitiveDataLogging()
     .UseLazyLoadingProxies()
     );
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -49,6 +53,11 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
     .AddDefaultTokenProviders();
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+
+builder.Services.AddScoped(typeof(IRepositoryConsult<>), typeof(RepositoryConsult<>));
+builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 
 var app = builder.Build();
 
@@ -80,6 +89,17 @@ app.MapRazorComponents<App>()
 app.MapAdditionalIdentityEndpoints();
 
 #region "Minimal Apis"
+
+app.MapGet("api/customers", async(
+        IBaseRepository<Customers> repositoryCustomer,
+        [FromQuery] string search
+    ) =>{
+
+        
+        
+    
+    return Results.Ok(new { });
+});
 
 #endregion
 

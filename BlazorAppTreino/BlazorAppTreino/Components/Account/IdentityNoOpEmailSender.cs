@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using BlazorAppTreino.Data;
+using BlazorAppTreino.Domain.Data;
 
 namespace BlazorAppTreino.Components.Account;
 

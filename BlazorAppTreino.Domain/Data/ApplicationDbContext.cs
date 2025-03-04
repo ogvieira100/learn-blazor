@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
 
-namespace BlazorAppTreino.Data;
+namespace BlazorAppTreino.Domain.Data;
 
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {

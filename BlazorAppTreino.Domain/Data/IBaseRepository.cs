@@ -1,5 +1,5 @@
 ﻿
-using BlazorAppTreino.Data;
+
 using BlazorAppTreino.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;

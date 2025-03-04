@@ -1,4 +1,4 @@
-﻿using BlazorAppTreino.Data;
+﻿
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
