@@ -13,19 +13,22 @@ namespace BlazorAppTreino.Domain.Models
 
         public int Length { get; set; }
 
-        public int QtdItens { get; set; }
+        public long QtdItens { get; set; }
 
         public int QtdPages
         {
             get
             {
+                if (QtdItens <= 0)
+                    return 0;
                 return (int)System.Math.Ceiling((decimal)QtdItens / Length);
             }
         }
         public Pagination()
-            : base()
+           
         {
-
+            Page = 1;
+            Length = 10;
 
         }
     }

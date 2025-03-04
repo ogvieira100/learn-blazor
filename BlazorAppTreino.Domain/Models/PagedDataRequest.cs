@@ -15,7 +15,7 @@ namespace BlazorAppTreino.Domain.Models
         public bool Desc { get; set; }
 
 
-        protected PagedDataRequest()
+        public PagedDataRequest()
         {
 
             Limit = 30;

@@ -2,7 +2,10 @@
     <ul class="pagination">
         @if (Pagination != null)
         {
-            <label for="pageSize">Page Size: </label>
+            <label 
+                for="pageSize">
+                Tamanho da paginação: 
+            </label>
             <select @onchange="HandlePageSizeChange"
                     value=@Pagination?.Length
                     id="pageSize">

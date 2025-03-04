@@ -1,5 +1,84 @@
-﻿<h3>CustomersGrid</h3>
+﻿@inject IHttpClientFactory factory
+@rendermode InteractiveAuto
+<table class="table caption-top">
+    <caption>Lista de clientes</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">SobreNome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Customers != null)
+        {
+            @foreach (var item in Customers)
+            {
+
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.SurName
+                    </td>
+                    <td>
+                        @item.Email
+                    </td>
+                    <td>
+                        @item.Telphone
+                    </td>
+                    <td>
+                        @item.CPF
+                    </td>
+                    <td>
+                        #
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
 
 @code {
+
+    [Parameter] public Customers? CustomersFilter { get; set; }
+    HttpClient? Api;
+    List<Customers>? Customers;
+    PagedDataResponse<Customers>? PagedDataResponseCustomers;
+    [Parameter] public Pagination? Pagination { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Customers = new List<Customers>();
+        Api = factory.CreateClient("ApiTreino");
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (Pagination == null)
+            Pagination = new Pagination();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Search();
+    }
+
+    public async Task Search()
+    {
+        var search = await Api!.GetFromJsonAsync<PagedDataResponse<Customers>>("api/customers");
+        PagedDataResponseCustomers = search;
+        if (PagedDataResponseCustomers != null)
+        {
+            Customers = PagedDataResponseCustomers.Items;
+            Pagination.QtdItens = PagedDataResponseCustomers.TotalItens;
+        }
+
+    }
 
 }

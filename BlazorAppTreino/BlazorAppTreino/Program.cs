@@ -11,6 +11,8 @@ using BlazorAppTreino.Domain.Models;
 using BlazorAppTreino.Domain.Data;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.AccessControl;
+using BlazorAppTreino.Domain.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -57,7 +59,10 @@ builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSe
 builder.Services.AddScoped(typeof(IRepositoryConsult<>), typeof(RepositoryConsult<>));
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddHttpClient("ApiTreino", (http) => {
 
+    http.BaseAddress = new Uri("https://localhost:7095");
+});
 
 var app = builder.Build();
 
@@ -90,15 +95,38 @@ app.MapAdditionalIdentityEndpoints();
 
 #region "Minimal Apis"
 
+app.MapPost("", async ([FromBody] string customer) => {
+
+    await Task.FromResult(true);
+    return Results.Ok(new { });
+});
+
+app.MapPut("", async ([FromBody] string customer) => {
+
+    await Task.FromResult(true);
+    return Results.Ok(new { });
+});
+
+app.MapDelete("", async () => {
+    await Task.FromResult(true);
+    return Results.Ok(new { });
+});
+
 app.MapGet("api/customers", async(
         IBaseRepository<Customers> repositoryCustomer,
-        [FromQuery] string search
+        [FromQuery] string? search
+        
     ) =>{
+        var query =  repositoryCustomer.RepositoryConsult.GetQueryable();
+        if (!string.IsNullOrEmpty(search))
+        {
+            var customer = Commons.ParseQueryStringToObject<Customers>(search);
+            if (!string.IsNullOrEmpty(customer.Name))
+                query = query.Where(x => x.Name.Contains(customer.Name));
+        }
 
-        
-        
-    
-    return Results.Ok(new { });
+        var response =   await query.PaginateAsync(new PagedDataRequest { });
+    return Results.Ok(response);
 });
 
 #endregion

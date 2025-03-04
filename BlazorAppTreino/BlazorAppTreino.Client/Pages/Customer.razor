@@ -1,0 +1,48 @@
+﻿@page "/customers"
+@rendermode InteractiveAuto
+
+<BootstrapCardComponent Title="Cadastro de Clientes">
+    <Header></Header>
+    <Body>
+        <CustomersGrid 
+            Pagination="Pagination"
+            @ref="customersGrid">
+        </CustomersGrid>
+    </Body>
+    <Footer>
+        <PaginateComponent PageSelected="OnPageSelectedAsync"
+        PageLengthChanged="OnPageLengthChangedAsync"
+        Pagination="Pagination">
+
+        </PaginateComponent>
+    </Footer>
+</BootstrapCardComponent>
+
+@code {
+
+
+    List<Customers>? Customers;
+    Pagination? Pagination;
+    CustomersGrid? customersGrid;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Run(() =>
+            {
+
+                Pagination = new Pagination();
+                Customers = new List<Customers>();
+            });
+    }
+
+
+    async Task OnPageSelectedAsync(int args)
+    {
+
+    }
+    async Task OnPageLengthChangedAsync(int args)
+    {
+
+    }
+}
