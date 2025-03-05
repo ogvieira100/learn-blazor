@@ -8,6 +8,22 @@ using System.Threading.Tasks;
 namespace BlazorAppTreino.Domain.Models
 {
 
+    public class CustomerSearch: PagedDataRequest
+    {
+
+         public string? Name { get; set; }
+
+        public string? Email { get; set; }
+
+        public string? Telphone { get; set; }
+
+        public string? SurName { get; set; }
+
+        public string? CPF { get; set; }
+
+
+    }
+
     public class CustomerGenerator
     {
         private static readonly Random _random = new Random();

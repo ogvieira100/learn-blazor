@@ -1,14 +1,142 @@
-﻿using System;
+﻿using BlazorAppTreino.Domain.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace BlazorAppTreino.Domain.Utils
 {
+    public enum EventNotification
+    {
+        Insert = 1,
+        Update = 2,
+        Delete = 3
+
+    }
+
+    public enum Priority
+    {
+        High = 1,
+        Average = 2,
+        Low = 3
+    }
+
+    public enum Layer
+    {
+        App = 1,
+        Domain = 2,
+        Repository = 3,
+        Others = 4
+    }
+    public enum TypeNotificationNoty
+    {
+        Alert = 1,
+        Error = 2,
+        Sucess = 3,
+        Information = 4,
+        BreakSystem = 5
+    }
+
+    public enum NotyIntention
+    {
+
+    }
+    public class Notys {
+
+        public Priority Priority { get; set; }
+
+        public Layer? Layer { get; set; }
+
+        public TypeNotificationNoty TypeNotificationNoty { get; set; }
+
+        public string Message { get; set; }
+
+        public NotyIntention? NotyIntention { get; set; }
+
+        public List<string> PropertsErrors { get; set; }
+
+        public Notys()
+        {
+            Priority = Priority.Average;
+            TypeNotificationNoty = TypeNotificationNoty.Error;
+            PropertsErrors = new List<string>();
+        }
+
+    }
+    public class ResponseApi<T> where T:class
+    {
+
+        public T Obj { get; set; }
+
+        public List<Notys> Notys { get; set; }
+
+        public ResponseApi()
+        {
+            Notys = new List<Notys>();
+            Obj =  Activator.CreateInstance<T>();
+        }
+    }
     public class Commons
     {
+
+
+        public static string ToQueryString<T>(T obj, string prefix = "")
+        {
+            if (obj == null) return string.Empty;
+            var properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            var queryString = new StringBuilder();
+
+            foreach (var prop in properties)
+            {
+                var value = prop.GetValue(obj);
+                if (value == null) continue;
+                string key = string.IsNullOrEmpty(prefix) ? prop.Name : $"{prefix}.{prop.Name}";
+
+                if (value is IList list)
+                {
+                    foreach (var item in list)
+                    {
+                        queryString.AppendFormat("{0}={1}&", key, Uri.EscapeDataString(item.ToString()));
+                    }
+                }
+                else if (prop.PropertyType.IsClass && prop.PropertyType != typeof(string))
+                {
+                    queryString.Append(ToQueryString(value, key));
+                }
+                else
+                {
+                    queryString.AppendFormat("{0}={1}&", key, Uri.EscapeDataString(value.ToString()));
+                }
+            }
+
+            return queryString.ToString().TrimEnd('&');
+        }
+
+
+
+        public static async Task<ResponseApi<T>> TreatResponse<T>(Func<Task<T>> func) 
+            where T: class {
+
+            var obj = Activator.CreateInstance<ResponseApi<T>>();
+            try
+            {
+                var objResp =  await func.Invoke();
+                obj.Obj = objResp ?? Activator.CreateInstance<T>();
+                return obj;
+
+            }
+            catch (Exception ex)
+            {
+                obj.Notys.Add(new Notys {
+                    Message  = ex.Message
+                });
+            }
+            return obj;
+        }
 
         public static T ParseQueryStringToObject<T>(string queryString) where T : new()
         {

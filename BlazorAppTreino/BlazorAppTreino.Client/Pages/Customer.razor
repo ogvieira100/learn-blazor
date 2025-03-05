@@ -4,9 +4,8 @@
 <BootstrapCardComponent Title="Cadastro de Clientes">
     <Header></Header>
     <Body>
-        <CustomersGrid 
-            Pagination="Pagination"
-            @ref="customersGrid">
+        <CustomersGrid PagedDataResponseCustomersChanged="OnPagedDataResponseCustomersChangedAsync"
+        @ref="customersGrid">
         </CustomersGrid>
     </Body>
     <Footer>
@@ -36,9 +35,22 @@
             });
     }
 
+    async Task OnPagedDataResponseCustomersChangedAsync(PagedDataResponse<Customers> pagedDataResponseCustomers)
+    {
+        await InvokeAsync(() =>
+        {
+            Pagination.QtdItens = pagedDataResponseCustomers.TotalItens;
+            StateHasChanged();
+        });
+    }
 
     async Task OnPageSelectedAsync(int args)
     {
+
+        await customersGrid.Search(new CustomerSearch()
+        {
+            Page = args    
+        });
 
     }
     async Task OnPageLengthChangedAsync(int args)

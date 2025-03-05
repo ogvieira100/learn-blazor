@@ -21,6 +21,9 @@
 
                 <tr>
                     <td>
+                        #
+                    </td>
+                    <td>
                         @item.Name
                     </td>
                     <td>
@@ -50,7 +53,7 @@
     HttpClient? Api;
     List<Customers>? Customers;
     PagedDataResponse<Customers>? PagedDataResponseCustomers;
-    [Parameter] public Pagination? Pagination { get; set; }
+    [Parameter] public EventCallback<PagedDataResponse<Customers>> PagedDataResponseCustomersChanged { get; set; }
 
     protected override void OnInitialized()
     {
@@ -60,25 +63,29 @@
 
     protected override void OnParametersSet()
     {
-        if (Pagination == null)
-            Pagination = new Pagination();
+
     }
 
     protected override async Task OnInitializedAsync()
     {
-        await Search();
+        await Search(new CustomerSearch());
     }
 
-    public async Task Search()
+    public async Task Search(CustomerSearch customerSearch)
     {
-        var search = await Api!.GetFromJsonAsync<PagedDataResponse<Customers>>("api/customers");
-        PagedDataResponseCustomers = search;
-        if (PagedDataResponseCustomers != null)
+        
+        var queryString = Newtonsoft.Json.JsonConvert.SerializeObject(customerSearch);
+        
+        var search = await Api!.GetFromJsonAsync<ResponseApi<PagedDataResponse<Customers>>>($"api/customers?search={queryString}");
+        if (!search.Notys.Any())
         {
-            Customers = PagedDataResponseCustomers.Items;
-            Pagination.QtdItens = PagedDataResponseCustomers.TotalItens;
+            PagedDataResponseCustomers = search.Obj;
+            if (PagedDataResponseCustomers != null)
+            {
+                Customers = PagedDataResponseCustomers.Items;
+                await PagedDataResponseCustomersChanged.InvokeAsync(search.Obj);
+            }
         }
-
     }
 
 }

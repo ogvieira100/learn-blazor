@@ -1,18 +1,17 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using BlazorAppTreino.Client.Pages;
 using BlazorAppTreino.Components;
 using BlazorAppTreino.Components.Account;
 using BlazorAppTreino.Domain.Data;
 using Microsoft.AspNetCore.Components;
 using System.ComponentModel;
 using BlazorAppTreino.Domain.Models;
-using BlazorAppTreino.Domain.Data;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.AccessControl;
 using BlazorAppTreino.Domain.Utils;
+using Microsoft.AspNetCore.Http;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,7 +58,8 @@ builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSe
 builder.Services.AddScoped(typeof(IRepositoryConsult<>), typeof(RepositoryConsult<>));
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddHttpClient("ApiTreino", (http) => {
+builder.Services.AddHttpClient("ApiTreino", (http) =>
+{
 
     http.BaseAddress = new Uri("https://localhost:7095");
 });
@@ -89,44 +89,52 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(BlazorAppTreino.Client._Imports).Assembly);
-
 // Add additional endpoints required by the Identity /Account Razor components.
 app.MapAdditionalIdentityEndpoints();
 
 #region "Minimal Apis"
 
-app.MapPost("", async ([FromBody] string customer) => {
+app.MapPost("", async ([FromBody] string customer) =>
+{
 
     await Task.FromResult(true);
     return Results.Ok(new { });
 });
 
-app.MapPut("", async ([FromBody] string customer) => {
+app.MapPut("", async ([FromBody] string customer) =>
+{
 
     await Task.FromResult(true);
     return Results.Ok(new { });
 });
 
-app.MapDelete("", async () => {
+app.MapDelete("", async () =>
+{
     await Task.FromResult(true);
     return Results.Ok(new { });
 });
 
-app.MapGet("api/customers", async(
+app.MapGet("api/customers", async (
         IBaseRepository<Customers> repositoryCustomer,
         [FromQuery] string? search
-        
-    ) =>{
-        var query =  repositoryCustomer.RepositoryConsult.GetQueryable();
+
+    ) =>
+{
+    var respApi = await Commons.TreatResponse(async () =>
+    {
+        var query = repositoryCustomer.RepositoryConsult.GetQueryable();
         if (!string.IsNullOrEmpty(search))
         {
-            var customer = Commons.ParseQueryStringToObject<Customers>(search);
+            
+            var customer = Newtonsoft.Json.JsonConvert.DeserializeObject<CustomerSearch>(search);
             if (!string.IsNullOrEmpty(customer.Name))
                 query = query.Where(x => x.Name.Contains(customer.Name));
-        }
 
-        var response =   await query.PaginateAsync(new PagedDataRequest { });
-    return Results.Ok(response);
+            return await query.PaginateAsync(customer);
+        }
+        return await query.PaginateAsync(new PagedDataRequest { });
+    });
+    return CascadingValueSource.ReturnApi(respApi);
 });
 
 #endregion
@@ -136,6 +144,13 @@ app.Run();
 
 public static class CascadingValueSource
 {
+
+    public static IResult ReturnApi<T>(ResponseApi<T> respApi) where T : class
+    {
+        if (respApi.Notys.Any(x => x.TypeNotificationNoty == TypeNotificationNoty.Error))
+            return Results.BadRequest(respApi);
+        return Results.Ok(respApi);
+    }
     public static CascadingValueSource<T> CreateNotifying<T>(T value, bool isFixed = false) where T : INotifyPropertyChanged
     {
         var source = new CascadingValueSource<T>(value, isFixed);
@@ -145,3 +160,4 @@ public static class CascadingValueSource
         return source;
     }
 }
+
