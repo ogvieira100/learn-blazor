@@ -1,51 +1,64 @@
 ﻿@inject IHttpClientFactory factory
 @rendermode InteractiveAuto
-<table class="table caption-top">
-    <caption>Lista de clientes</caption>
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">SobreNome</th>
-            <th scope="col">Email</th>
-            <th scope="col">Telefone</th>
-            <th scope="col">CPF</th>
-            <th scope="col">Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Customers != null)
-        {
-            @foreach (var item in Customers)
-            {
 
-                <tr>
-                    <td>
-                        #
-                    </td>
-                    <td>
-                        @item.Name
-                    </td>
-                    <td>
-                        @item.SurName
-                    </td>
-                    <td>
-                        @item.Email
-                    </td>
-                    <td>
-                        @item.Telphone
-                    </td>
-                    <td>
-                        @item.CPF
-                    </td>
-                    <td>
-                        #
-                    </td>
-                </tr>
+
+@if (Customers == null || !Customers.Any())
+{
+    <div class="alert alert-warning" role="alert">
+       Atenção não há dados para a consulta!.
+    </div>
+}
+else
+{
+    <table class="table caption-top">
+        <caption>Lista de clientes</caption>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">SobreNome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Customers != null)
+            {
+                @foreach (var item in Customers)
+                {
+
+                    <tr>
+                        <td>
+                            #
+                        </td>
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.SurName
+                        </td>
+                        <td>
+                            @item.Email
+                        </td>
+                        <td>
+                            @item.Telphone
+                        </td>
+                        <td>
+                            @item.CPF
+                        </td>
+                        <td>
+                            #
+                        </td>
+                    </tr>
+                }
             }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+    
+}
+
 
 @code {
 

@@ -4,8 +4,11 @@
 <BootstrapCardComponent Title="Cadastro de Clientes">
     <Header></Header>
     <Body>
+        <CustomersFilters CustomerSearchChanged=OnCustomerSearchChangedAsync>
+
+        </CustomersFilters>
         <CustomersGrid PagedDataResponseCustomersChanged="OnPagedDataResponseCustomersChangedAsync"
-        @ref="customersGrid">
+             @ref="CustomersGrid">
         </CustomersGrid>
     </Body>
     <Footer>
@@ -22,7 +25,8 @@
 
     List<Customers>? Customers;
     Pagination? Pagination;
-    CustomersGrid? customersGrid;
+    CustomersGrid? CustomersGrid;
+    CustomerSearch? CustomerSearch;
 
 
     protected override async Task OnInitializedAsync()
@@ -32,7 +36,16 @@
 
                 Pagination = new Pagination();
                 Customers = new List<Customers>();
+                CustomerSearch = new CustomerSearch();
             });
+    }
+
+    async Task OnCustomerSearchChangedAsync(CustomerSearch customerSearch)
+    {
+        CustomerSearch.Name = customerSearch.Name;
+        CustomerSearch.Page = 1;
+        await CustomersGrid.Search(CustomerSearch);
+
     }
 
     async Task OnPagedDataResponseCustomersChangedAsync(PagedDataResponse<Customers> pagedDataResponseCustomers)
@@ -46,15 +59,13 @@
 
     async Task OnPageSelectedAsync(int args)
     {
-
-        await customersGrid.Search(new CustomerSearch()
-        {
-            Page = args    
-        });
-
+        CustomerSearch.Page = args;
+        await CustomersGrid.Search(CustomerSearch);
     }
     async Task OnPageLengthChangedAsync(int args)
     {
-
+        CustomerSearch.Page = 1;
+        CustomerSearch.Limit = args;
+        await CustomersGrid.Search(CustomerSearch);
     }
 }

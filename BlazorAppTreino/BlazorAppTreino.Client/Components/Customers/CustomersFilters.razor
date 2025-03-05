@@ -1,5 +1,37 @@
-﻿<h3>CustomersFilters</h3>
-
+﻿<EditForm Model="@CustomerSearch">
+    <BootstrapCardComponent>
+        <Header>
+            Pesquisa de Clientes
+        </Header>
+        <Body>
+            <div class="mb-3 row">
+                <label for="staticName" class="col-sm-2 col-form-label">Nome</label>
+                <div class="col-sm-10">
+                    <input type="text"
+                           class="form-control"
+                           id="staticName"
+                           @bind=CustomerSearch.Name />
+                </div>
+            </div>
+        </Body>
+        <Footer>
+            <button @onclick=Search type="button" class="btn btn-primary">Primary</button>
+        </Footer>
+    </BootstrapCardComponent>
+</EditForm>
 @code {
+    CustomerSearch? CustomerSearch;
+
+
+    protected override void OnInitialized()
+    {
+        CustomerSearch = new CustomerSearch();
+    }
+    [Parameter] public EventCallback<CustomerSearch> CustomerSearchChanged { get; set; }
+
+    async Task Search()
+    {
+        await CustomerSearchChanged.InvokeAsync(CustomerSearch);
+    }
 
 }
