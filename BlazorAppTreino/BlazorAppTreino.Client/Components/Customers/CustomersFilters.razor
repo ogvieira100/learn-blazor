@@ -1,4 +1,6 @@
-﻿<EditForm Model="@CustomerSearch">
+﻿@inject NavigationManager NavigationManager;
+
+<EditForm Model="@CustomerSearch">
     <BootstrapCardComponent>
         <Header>
             Pesquisa de Clientes
@@ -8,17 +10,32 @@
                 <label for="staticName" class="col-sm-2 col-form-label">Nome</label>
                 <div class="col-sm-10">
                     <input type="text"
-                           class="form-control"
-                           id="staticName"
-                           @bind=CustomerSearch.Name />
+                    class="form-control"
+                    id="staticName"
+                    @bind=CustomerSearch.Name />
                 </div>
             </div>
         </Body>
         <Footer>
-            <button @onclick=Search type="button" class="btn btn-primary">Primary</button>
+            <div class="d-flex gap-1 mb-3 justify-content-end">
+                <button @onclick=Search type="button" class="btn btn-primary">
+                    Pesquisar
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                </button>
+                <button @onclick=Novo type="button" class="btn btn-primary">
+                    Novo
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                        <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4" />
+                    </svg>
+                </button>
+            </div>
         </Footer>
     </BootstrapCardComponent>
 </EditForm>
+
 @code {
     CustomerSearch? CustomerSearch;
 
@@ -32,6 +49,11 @@
     async Task Search()
     {
         await CustomerSearchChanged.InvokeAsync(CustomerSearch);
+    }
+
+    void Novo()
+    {
+        NavigationManager.NavigateTo("/customernew");
     }
 
 }

@@ -3,12 +3,12 @@
         @if (Pagination != null)
         {
             <label 
-                for="pageSize">
+            for="pageSize">
                 Tamanho da paginação: 
             </label>
             <select @onchange="HandlePageSizeChange"
-                    value=@Pagination?.Length
-                    id="pageSize">
+            value=@Pagination?.Length
+            id="pageSize">
                 @foreach (var size in PageSizes)
                 {
                     <option value="@size">@size</option>
@@ -56,12 +56,16 @@
         {
             Pagination.Length = pageSize;
             Pagination.Page = 1;
-            // StateHasChanged();
             await PageLengthChanged.InvokeAsync(pageSize);
         }
     }
 
+    public void StateChanchedUpdate()
+    {
 
+        StateHasChanged();
+
+    }
 
     readonly int[] PageSizes = new[] { 5, 10, 20, 50 };
 
@@ -74,7 +78,6 @@
     async Task OnPageSelected(int page)
     {
         Pagination.Page = page;
-        //StateHasChanged();
         await PageSelected.InvokeAsync(page);
     }
 

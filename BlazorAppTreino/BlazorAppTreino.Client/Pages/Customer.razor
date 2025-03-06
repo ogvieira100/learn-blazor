@@ -8,11 +8,12 @@
 
         </CustomersFilters>
         <CustomersGrid PagedDataResponseCustomersChanged="OnPagedDataResponseCustomersChangedAsync"
-             @ref="CustomersGrid">
+        @ref="CustomersGrid">
         </CustomersGrid>
     </Body>
     <Footer>
-        <PaginateComponent PageSelected="OnPageSelectedAsync"
+        <PaginateComponent @ref="PaginateComponent"
+        PageSelected="OnPageSelectedAsync"
         PageLengthChanged="OnPageLengthChangedAsync"
         Pagination="Pagination">
 
@@ -27,6 +28,7 @@
     Pagination? Pagination;
     CustomersGrid? CustomersGrid;
     CustomerSearch? CustomerSearch;
+    PaginateComponent? PaginateComponent;
 
 
     protected override async Task OnInitializedAsync()
@@ -45,7 +47,7 @@
         CustomerSearch.Name = customerSearch.Name;
         CustomerSearch.Page = 1;
         await CustomersGrid.Search(CustomerSearch);
-
+        Pagination.Page = 1;
     }
 
     async Task OnPagedDataResponseCustomersChangedAsync(PagedDataResponse<Customers> pagedDataResponseCustomers)
@@ -53,7 +55,7 @@
         await InvokeAsync(() =>
         {
             Pagination.QtdItens = pagedDataResponseCustomers.TotalItens;
-            StateHasChanged();
+            
         });
     }
 
@@ -61,11 +63,14 @@
     {
         CustomerSearch.Page = args;
         await CustomersGrid.Search(CustomerSearch);
+       
     }
     async Task OnPageLengthChangedAsync(int args)
     {
         CustomerSearch.Page = 1;
+        Pagination.Page = 1;
         CustomerSearch.Limit = args;
         await CustomersGrid.Search(CustomerSearch);
+       
     }
 }
