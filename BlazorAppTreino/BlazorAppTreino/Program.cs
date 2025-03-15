@@ -108,10 +108,20 @@ app.MapPut("", async ([FromBody] string customer) =>
     return Results.Ok(new { });
 });
 
-app.MapDelete("", async () =>
+app.MapDelete("api/customers/{id}", async (
+    IBaseRepository<Customers> repositoryCustomer,
+    long id
+    ) =>
 {
-    await Task.FromResult(true);
-    return Results.Ok(new { });
+    var respApi = await Commons.TreatResponse(async () =>
+    {
+        var customer =  (await repositoryCustomer.RepositoryConsult.SearchAsync(x => x.Id == id))?.FirstOrDefault();
+        if (customer != null)
+            repositoryCustomer.Remove(customer);
+        await repositoryCustomer.UnitOfWork.CommitAsync();    
+        return new {   };
+    });
+    return CascadingValueSource.ReturnApi(respApi);
 });
 
 app.MapGet("api/customers", async (

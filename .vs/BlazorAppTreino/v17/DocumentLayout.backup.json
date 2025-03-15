@@ -3,6 +3,42 @@
   "WorkspaceRootPath": "D:\\Projetos\\blazor\\auto\\BlazorApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|d:\\projetos\\blazor\\auto\\blazorapp\\blazorapptreino\\blazorapptreino.client\\components\\customers\\customersgrid.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|solutionrelative:blazorapptreino\\blazorapptreino.client\\components\\customers\\customersgrid.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6460FEA8-562E-5FA0-537E-2C1C5B43DA8D}|BlazorAppTreino.Domain\\BlazorAppTreino.Domain.csproj|d:\\projetos\\blazor\\auto\\blazorapp\\blazorapptreino.domain\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6460FEA8-562E-5FA0-537E-2C1C5B43DA8D}|BlazorAppTreino.Domain\\BlazorAppTreino.Domain.csproj|solutionrelative:blazorapptreino.domain\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8100054C-BF34-40BD-8510-8557D07B1EF4}|BlazorAppTreino\\BlazorAppTreino\\BlazorAppTreino.csproj|d:\\projetos\\blazor\\auto\\blazorapp\\blazorapptreino\\blazorapptreino\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8100054C-BF34-40BD-8510-8557D07B1EF4}|BlazorAppTreino\\BlazorAppTreino\\BlazorAppTreino.csproj|solutionrelative:blazorapptreino\\blazorapptreino\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|d:\\projetos\\blazor\\auto\\blazorapp\\blazorapptreino\\blazorapptreino.client\\components\\bootstrap\\modalcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|solutionrelative:blazorapptreino\\blazorapptreino.client\\components\\bootstrap\\modalcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|d:\\projetos\\blazor\\auto\\blazorapp\\blazorapptreino\\blazorapptreino.client\\pages\\bootstrapcard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|solutionrelative:blazorapptreino\\blazorapptreino.client\\pages\\bootstrapcard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|d:\\projetos\\blazor\\auto\\blazorapp\\blazorapptreino\\blazorapptreino.client\\components\\customers\\customersfilters.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|solutionrelative:blazorapptreino\\blazorapptreino.client\\components\\customers\\customersfilters.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|d:\\projetos\\blazor\\auto\\blazorapp\\blazorapptreino\\blazorapptreino.client\\pages\\customersedit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|solutionrelative:blazorapptreino\\blazorapptreino.client\\pages\\customersedit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8100054C-BF34-40BD-8510-8557D07B1EF4}|BlazorAppTreino\\BlazorAppTreino\\BlazorAppTreino.csproj|d:\\projetos\\blazor\\auto\\blazorapp\\blazorapptreino\\blazorapptreino\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8100054C-BF34-40BD-8510-8557D07B1EF4}|BlazorAppTreino\\BlazorAppTreino\\BlazorAppTreino.csproj|solutionrelative:blazorapptreino\\blazorapptreino\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8100054C-BF34-40BD-8510-8557D07B1EF4}|BlazorAppTreino\\BlazorAppTreino\\BlazorAppTreino.csproj|d:\\projetos\\blazor\\auto\\blazorapp\\blazorapptreino\\blazorapptreino\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8100054C-BF34-40BD-8510-8557D07B1EF4}|BlazorAppTreino\\BlazorAppTreino\\BlazorAppTreino.csproj|solutionrelative:blazorapptreino\\blazorapptreino\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|d:\\projetos\\blazor\\auto\\blazorapp\\blazorapptreino\\blazorapptreino.client\\pages\\customer.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|solutionrelative:blazorapptreino\\blazorapptreino.client\\pages\\customer.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -11,20 +47,8 @@
       "RelativeMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|solutionrelative:blazorapptreino\\blazorapptreino.client\\components\\paginatecomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|d:\\projetos\\blazor\\auto\\blazorapp\\blazorapptreino\\blazorapptreino.client\\components\\customers\\customersgrid.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|solutionrelative:blazorapptreino\\blazorapptreino.client\\components\\customers\\customersgrid.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|d:\\projetos\\blazor\\auto\\blazorapp\\blazorapptreino\\blazorapptreino.client\\components\\customers\\customersfilters.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|solutionrelative:blazorapptreino\\blazorapptreino.client\\components\\customers\\customersfilters.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|d:\\projetos\\blazor\\auto\\blazorapp\\blazorapptreino\\blazorapptreino.client\\pages\\customersnew.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|solutionrelative:blazorapptreino\\blazorapptreino.client\\pages\\customersnew.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|d:\\projetos\\blazor\\auto\\blazorapp\\blazorapptreino\\blazorapptreino.client\\pages\\customersedit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|solutionrelative:blazorapptreino\\blazorapptreino.client\\pages\\customersedit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C214F1ED-6285-46EE-8428-891A476D757C}|BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj|d:\\projetos\\blazor\\auto\\blazorapp\\blazorapptreino\\blazorapptreino.client\\pages\\routerhub.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -38,8 +62,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 7,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Customer.cs",
+              "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino.Domain\\Models\\Customer.cs",
+              "RelativeDocumentMoniker": "BlazorAppTreino.Domain\\Models\\Customer.cs",
+              "ToolTip": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino.Domain\\Models\\Customer.cs",
+              "RelativeToolTip": "BlazorAppTreino.Domain\\Models\\Customer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T18:20:16.85Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
@@ -54,44 +91,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PaginateComponent.razor",
-              "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Components\\PaginateComponent.razor",
-              "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Components\\PaginateComponent.razor",
-              "ToolTip": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Components\\PaginateComponent.razor",
-              "RelativeToolTip": "BlazorAppTreino\\BlazorAppTreino.Client\\Components\\PaginateComponent.razor",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-06T00:00:38.1Z",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino\\Program.cs",
+              "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino\\Program.cs",
+              "ToolTip": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino\\Program.cs",
+              "RelativeToolTip": "BlazorAppTreino\\BlazorAppTreino\\Program.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAhwHIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T18:16:05.806Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CustomersGrid.razor",
-              "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Customers\\CustomersGrid.razor",
-              "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Customers\\CustomersGrid.razor",
-              "ToolTip": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Customers\\CustomersGrid.razor",
-              "RelativeToolTip": "BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Customers\\CustomersGrid.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAmAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "ModalComponent.razor",
+              "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Bootstrap\\ModalComponent.razor",
+              "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Bootstrap\\ModalComponent.razor",
+              "ToolTip": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Bootstrap\\ModalComponent.razor",
+              "RelativeToolTip": "BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Bootstrap\\ModalComponent.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-05T21:39:59.163Z"
+              "WhenOpened": "2025-03-15T17:47:33.558Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CustomersNew.razor",
-              "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\CustomersNew.razor",
-              "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\CustomersNew.razor",
-              "ToolTip": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\CustomersNew.razor",
-              "RelativeToolTip": "BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\CustomersNew.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-05T20:43:47.624Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "CustomersEdit.razor",
               "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\CustomersEdit.razor",
               "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\CustomersEdit.razor",
@@ -99,11 +125,64 @@
               "RelativeToolTip": "BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\CustomersEdit.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-05T20:43:25.058Z"
+              "WhenOpened": "2025-03-05T20:43:25.058Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
+              "Title": "CustomersGrid.razor",
+              "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Customers\\CustomersGrid.razor",
+              "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Customers\\CustomersGrid.razor",
+              "ToolTip": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Customers\\CustomersGrid.razor",
+              "RelativeToolTip": "BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Customers\\CustomersGrid.razor",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAhwFUAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-05T21:39:59.163Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BootstrapCard.razor",
+              "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\BootstrapCard.razor",
+              "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\BootstrapCard.razor",
+              "ToolTip": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\BootstrapCard.razor",
+              "RelativeToolTip": "BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\BootstrapCard.razor",
+              "ViewState": "AgIAABoAAAAAAAAAAAAAABwAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-15T17:55:01.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CustomersFilters.razor",
+              "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Customers\\CustomersFilters.razor",
+              "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Customers\\CustomersFilters.razor",
+              "ToolTip": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Customers\\CustomersFilters.razor",
+              "RelativeToolTip": "BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Customers\\CustomersFilters.razor",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-05T14:38:52.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino\\appsettings.json",
+              "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino\\appsettings.json",
+              "ToolTip": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino\\appsettings.json",
+              "RelativeToolTip": "BlazorAppTreino\\BlazorAppTreino\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-15T16:44:45.207Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "RouterHub.razor",
               "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\RouterHub.razor",
               "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\RouterHub.razor",
@@ -115,28 +194,53 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CustomersFilters.razor",
-              "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Customers\\CustomersFilters.razor",
-              "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Customers\\CustomersFilters.razor",
-              "ToolTip": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Customers\\CustomersFilters.razor",
-              "RelativeToolTip": "BlazorAppTreino\\BlazorAppTreino.Client\\Components\\Customers\\CustomersFilters.razor",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-05T14:38:52.259Z"
+              "DocumentIndex": 8,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino\\appsettings.Development.json",
+              "ToolTip": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino\\appsettings.Development.json",
+              "RelativeToolTip": "BlazorAppTreino\\BlazorAppTreino\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-15T16:44:41.614Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 9,
               "Title": "Customer.razor",
               "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\Customer.razor",
               "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\Customer.razor",
               "ToolTip": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\Customer.razor",
               "RelativeToolTip": "BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\Customer.razor",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAADUAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-03-05T14:33:45.436Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CustomersNew.razor",
+              "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\CustomersNew.razor",
+              "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\CustomersNew.razor",
+              "ToolTip": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\CustomersNew.razor",
+              "RelativeToolTip": "BlazorAppTreino\\BlazorAppTreino.Client\\Pages\\CustomersNew.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-05T20:43:47.624Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PaginateComponent.razor",
+              "DocumentMoniker": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Components\\PaginateComponent.razor",
+              "RelativeDocumentMoniker": "BlazorAppTreino\\BlazorAppTreino.Client\\Components\\PaginateComponent.razor",
+              "ToolTip": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\Components\\PaginateComponent.razor",
+              "RelativeToolTip": "BlazorAppTreino\\BlazorAppTreino.Client\\Components\\PaginateComponent.razor",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-06T00:00:38.1Z"
             }
           ]
         }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "aC+nhWGRTJM=",
+  "dgSpecHash": "1n51sivSaDo=",
   "success": true,
   "projectFilePath": "D:\\Projetos\\blazor\\auto\\BlazorApp\\BlazorAppTreino\\BlazorAppTreino.Client\\BlazorAppTreino.Client.csproj",
   "expectedPackageFiles": [
@@ -67,8 +67,8 @@
     "C:\\Users\\ogvieira\\.nuget\\packages\\microsoft.jsinterop\\9.0.2\\microsoft.jsinterop.9.0.2.nupkg.sha512",
     "C:\\Users\\ogvieira\\.nuget\\packages\\microsoft.jsinterop.webassembly\\9.0.2\\microsoft.jsinterop.webassembly.9.0.2.nupkg.sha512",
     "C:\\Users\\ogvieira\\.nuget\\packages\\microsoft.net.http.headers\\2.3.0\\microsoft.net.http.headers.2.3.0.nupkg.sha512",
-    "C:\\Users\\ogvieira\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.2\\microsoft.net.illink.tasks.9.0.2.nupkg.sha512",
-    "C:\\Users\\ogvieira\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\9.0.2\\microsoft.net.sdk.webassembly.pack.9.0.2.nupkg.sha512",
+    "C:\\Users\\ogvieira\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.3\\microsoft.net.illink.tasks.9.0.3.nupkg.sha512",
+    "C:\\Users\\ogvieira\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\9.0.3\\microsoft.net.sdk.webassembly.pack.9.0.3.nupkg.sha512",
     "C:\\Users\\ogvieira\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\ogvieira\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\ogvieira\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
