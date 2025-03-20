@@ -1,0 +1,67 @@
+﻿<input  @bind="CpfTexto"
+@bind:event="oninput"
+@onkeyup="ValidarEntrada"
+maxlength="14"
+placeholder="000.000.000-00"
+class="form-control" />
+
+@code {
+    string _cpfTexto = "";
+    /*valor com mascara e sem mascara*/
+    [Parameter]
+    public EventCallback<(string,string)> ValueChanged { get; set; }
+
+    [Parameter] public string InitialValue { get; set; } = default!;
+
+    public string CpfTexto
+    {
+        get { return _cpfTexto; }
+        set 
+        {
+            if (!string.IsNullOrEmpty(value))
+                _cpfTexto = FormatarCpf(value);
+            else
+                _cpfTexto = value;
+        }
+    }
+
+    protected override void OnParametersSet()
+    {
+        CpfTexto = InitialValue;
+    }
+
+    async Task ValidarEntrada(KeyboardEventArgs e)
+    {
+        string[] keysPass = { "Backspace", "Delete" };
+        // Permite apenas números
+        if (!char.IsDigit(e.Key, 0) 
+        &&  !keysPass.Contains(e.Key))
+        {
+            return;
+        }
+        await ValueChanged.InvokeAsync((CpfTexto, UnMaskCpf(CpfTexto)));
+    }
+
+
+    string UnMaskCpf(string cpf)
+    => cpf = new string(cpf.Where(char.IsDigit).ToArray()); // Remove tudo que não for número
+
+
+    string FormatarCpf(string cpf)
+    {
+        cpf = UnMaskCpf(cpf); // Remove tudo que não for número
+
+        if (cpf.Length > 11)
+            cpf = cpf[..11]; // Garante que não ultrapasse 11 números
+
+        return cpf.Length switch
+        {
+            > 9 => $"{cpf[..3]}.{cpf[3..6]}.{cpf[6..9]}-{cpf[9..]}",
+            > 6 => $"{cpf[..3]}.{cpf[3..6]}.{cpf[6..]}",
+            > 3 => $"{cpf[..3]}.{cpf[3..]}",
+            _ => cpf
+        };
+    }
+
+
+}

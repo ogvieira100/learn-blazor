@@ -1,0 +1,59 @@
+﻿@inject IJSRuntime JS
+@using System;
+@using System.Timers;
+@implements IDisposable; 
+
+<button @onclick=ShowMessage>click</button>
+
+<div id="toast-container" class="toast-top-right">
+    <div class="toast toast-success" aria-live="polite" style="display: block;">
+        <div class="toast-message">Have fun storming the castle!</div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public bool IsVisible { get; set; } = true;
+    [Parameter] public string IconCssClass { get; set; } = "check";
+    [Parameter] public string Heading { get; set; } = "cabe";
+    [Parameter] public string Message { get; set; } = "Ola";
+    [Parameter] public string BackgroundCssClass { get; set; } = "bg-info";
+
+    private Timer? Countdown;
+
+    private void StartCountdown()
+    {
+        SetCountdown();
+        if (Countdown.Enabled)
+        {
+            Countdown.Stop();
+            Countdown.Start();
+        }
+        else
+        {
+            Countdown.Start();
+        }
+    }
+    private void SetCountdown()
+    {
+        if (Countdown == null)
+        {
+            Countdown = new Timer(5000);
+            Countdown.Elapsed += HideToast;
+            Countdown.AutoReset = false;
+        }
+    }
+
+    private void HideToast(object source, ElapsedEventArgs args)
+    {
+        /*fechar toast*/
+    }
+    public void Dispose()
+    {
+        Countdown?.Dispose();
+    }
+    public void ShowMessage()
+    {
+        StartCountdown();
+    }
+
+}

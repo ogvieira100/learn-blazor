@@ -1,5 +1,63 @@
-﻿<h3>CustomersEdit</h3>
+﻿@page "/CustomerEdit"
+@page "/CustomerEdit/{CustomerId}"
+@using System.ComponentModel.DataAnnotations
+@rendermode InteractiveAuto
 
-@code {
+<EditForm Model="Customer" OnValidSubmit="SaveCustomer">
+    <DataAnnotationsValidator /> 
+    <ValidationSummary /> 
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">Cadastro de Cliente</div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">Nome</label>
+                    <InputText class="form-control" @bind-Value="Customer.Name" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Sobrenome</label>
+                    <InputText class="form-control" @bind-Value="Customer.SurName" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <InputText class="form-control" @bind-Value="Customer.Email" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Telefone</label>
+                    <InputText class="form-control" @bind-Value="Customer.Telphone" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">CPF</label>
+                    <InputCPF ValueChanged="@(v => Customer.CPF = v.Item1 )" InitialValue="@Customer.CPF"></InputCPF>
+                    @* <InputText class="form-control" @bind-Value="Customer.CPF" /> *@
+                </div>
 
-}
+                <h5>Endereços</h5>
+                <button type="button" class="btn btn-success mb-2" @onclick="AddAddress">Adicionar Endereço</button>
+                <div class="list-group">
+                    @foreach (var address in Customer.Addresses)
+                    {
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class="form-label">Rua</label>
+                                    <InputText class="form-control" @bind-Value="address.Street" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Número</label>
+                                    <InputText class="form-control" @bind-Value="address.Number" />
+                                </div>
+                                <div class="col-md-2 d-flex align-items-end">
+                                    <button type="button" class="btn btn-danger" @onclick="() => RemoveAddress(address)">Remover</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+            </div>
+        </div>
+       
+    </div>
+</EditForm>
+

@@ -1,8 +1,11 @@
 ﻿@page "/customers"
 @rendermode InteractiveAuto
+@inject ToastrService toastrService
 
 <BootstrapCardComponent Title="Cadastro de Clientes">
-    <Header></Header>
+    <Header>
+       
+    </Header>
     <Body>
         <CustomersFilters CustomerSearchChanged=OnCustomerSearchChangedAsync>
 
@@ -30,6 +33,7 @@
     CustomerSearch? CustomerSearch;
     PaginateComponent? PaginateComponent;
 
+ 
 
     protected override async Task OnInitializedAsync()
     {

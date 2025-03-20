@@ -1683,6 +1683,7 @@
           "Microsoft.EntityFrameworkCore": "9.0.2",
           "Microsoft.EntityFrameworkCore.Proxies": "9.0.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.2",
+          "Microsoft.JSInterop": "9.0.2",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -3302,6 +3303,7 @@
           "Microsoft.EntityFrameworkCore": "9.0.2",
           "Microsoft.EntityFrameworkCore.Proxies": "9.0.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.2",
+          "Microsoft.JSInterop": "9.0.2",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {

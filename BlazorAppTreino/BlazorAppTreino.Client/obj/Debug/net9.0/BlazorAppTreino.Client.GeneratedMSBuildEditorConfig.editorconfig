@@ -72,6 +72,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xIZWFkZXJPcmRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/InputCPF.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xJbnB1dENQRi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/PaginateComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdpbmF0ZUNvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -100,6 +104,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xUYXNrTGlzdHNcVGFza3NMaXN0c0luUHJvZ3Jlc3NDb21wb25lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Components/Toast.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xUb2FzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Pages/Auth.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -126,10 +134,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Pages/Customer.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXIucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Pages/CustomersEdit.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJzRWRpdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Pages/CustomersNew.razor]
@@ -163,3 +167,7 @@ build_metadata.AdditionalFiles.CssScope =
 [D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projetos/blazor/auto/BlazorApp/BlazorAppTreino/BlazorAppTreino.Client/Pages/CustomersEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJzRWRpdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-pxt7pz7k0g

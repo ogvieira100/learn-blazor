@@ -9,7 +9,8 @@ using System.ComponentModel;
 using BlazorAppTreino.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using BlazorAppTreino.Domain.Utils;
-using Microsoft.AspNetCore.Http;
+using BlazorAppTreino.Domain.Services;
+using Microsoft.AspNetCore.Components.Server;
 
 
 
@@ -19,7 +20,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents()
-    .AddAuthenticationStateSerialization();
+    .AddAuthenticationStateSerialization()
+    
+    ;
 
 builder.Services.AddCascadingValue(sp =>
     CascadingValueSource.CreateNotifying(new StyleContext()));
@@ -58,11 +61,24 @@ builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSe
 builder.Services.AddScoped(typeof(IRepositoryConsult<>), typeof(RepositoryConsult<>));
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<ToastrService>();
+
+//builder.Services.AddScoped<IJSRuntime>();
+
+
+//
 builder.Services.AddHttpClient("ApiTreino", (http) =>
 {
 
     http.BaseAddress = new Uri("https://localhost:7095");
 });
+
+builder.Services.Configure<CircuitOptions>(options => {
+
+    options.DetailedErrors = true;
+
+}
+);
 
 var app = builder.Build();
 
@@ -71,6 +87,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
     app.UseMigrationsEndPoint();
+  
 }
 else
 {
@@ -88,7 +105,9 @@ app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
-    .AddAdditionalAssemblies(typeof(BlazorAppTreino.Client._Imports).Assembly);
+    .AddAdditionalAssemblies(typeof(BlazorAppTreino.Client._Imports).Assembly)
+    
+    ;
 // Add additional endpoints required by the Identity /Account Razor components.
 app.MapAdditionalIdentityEndpoints();
 
@@ -147,9 +166,29 @@ app.MapGet("api/customers", async (
     return CascadingValueSource.ReturnApi(respApi);
 });
 
+    app.MapGet("api/customers/{id}", async (
+            IBaseRepository<Customers> repositoryCustomer,
+            [FromRoute] string? id
+
+        ) =>
+{
+    var respApi = await Commons.TreatResponse(async () =>
+    {
+
+        if (Int64.TryParse(id, out var idSearch))
+        {
+            return   (await repositoryCustomer.RepositoryConsult.SearchAsync(x => x.Id == idSearch))?.FirstOrDefault();
+
+        }else 
+            return null;
+    });
+    return CascadingValueSource.ReturnApi(respApi);
+});
+
 #endregion
 
 app.Run();
+
 
 
 public static class CascadingValueSource
